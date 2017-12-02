@@ -1,4 +1,5 @@
 // The GamePanel is the drawing canvas.
+
 // It contains the game loop which
 // keeps the game moving forward.
 // This class is also the one that grabs key events.
@@ -6,6 +7,7 @@
 package com.neet.DiamondHunter.Main;
 
 import java.awt.Dimension;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
@@ -24,7 +26,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	// HEIGHT is the playing area size
 	// HEIGHT2 includes the bottom window
 	public static final int WIDTH = 128;
-	public static final int HEIGHT = 128;
+	public static final int HEIGHT =128 ;
 	public static final int HEIGHT2 = HEIGHT + 16;
 	public static final int SCALE = 3;
 	
@@ -37,6 +39,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	// drawing stuff
 	private BufferedImage image;
 	private Graphics2D g;
+	
 	
 	// game state manager
 	private GameStateManager gsm;

@@ -5,12 +5,14 @@
 package com.neet.DiamondHunter.Manager;
 
 import java.awt.Graphics2D;
+
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 
 public class Content {
-	
+	//                                                                   length width
 	public static BufferedImage[][] MENUBG = load("/HUD/menuscreen.gif", 128, 144);
 	public static BufferedImage[][] BAR = load("/HUD/bar.gif", 128, 16);
 	
@@ -28,6 +30,7 @@ public class Content {
 			int width = spritesheet.getWidth() / w;
 			int height = spritesheet.getHeight() / h;
 			ret = new BufferedImage[height][width];
+			System.out.println(Arrays.toString(ret));
 			for(int i = 0; i < height; i++) {
 				for(int j = 0; j < width; j++) {
 					ret[i][j] = spritesheet.getSubimage(j * w, i * h, w, h);
