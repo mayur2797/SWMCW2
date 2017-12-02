@@ -69,7 +69,7 @@ public class PlayState extends GameState {
 		// load map
 		tileMap = new TileMap(16);
 		tileMap.loadTiles("/Tilesets/testtileset.gif");
-		tileMap.loadMap("/Maps/testmap.map");
+		tileMap.loadMap("/Maps/testmap.map");//loading map
 		
 		// create player
 		player = new Player(tileMap);
@@ -119,6 +119,7 @@ public class PlayState extends GameState {
 		d.setTilePosition(20, 20);
 		d.addChange(new int[] { 23, 19, 1 });
 		d.addChange(new int[] { 23, 20, 1 });
+		//remove trees
 		diamonds.add(d);
 		d = new Diamond(tileMap);
 		d.setTilePosition(12, 36);
@@ -173,7 +174,7 @@ public class PlayState extends GameState {
 	private void populateItems() {
 		
 		Item item;
-		
+		//position of axe and boat
 		item = new Item(tileMap);
 		item.setType(Item.AXE);
 		item.setTilePosition(26, 37);
