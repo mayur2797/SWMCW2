@@ -4,8 +4,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
+<<<<<<< HEAD
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Canvas height="510.0" layoutX="84.0" layoutY="65.0" width="570.0" />
+=======
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Canvas height="404.0" layoutX="-7.0" layoutY="107.0" width="770.0" />
+>>>>>>> 9d9c40ac86453d8e780886b8d904283313558f55
    </children>
 </AnchorPane>
