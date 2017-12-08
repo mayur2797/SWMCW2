@@ -14,7 +14,7 @@ public class Game {
 		
 		window.add(new GamePanel());
 		
-		window.setResizable(false);
+		window.setResizable(true);
 		window.pack();
 		
 		window.setLocationRelativeTo(null);

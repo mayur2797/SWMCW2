@@ -1,14 +1,16 @@
-// The tile map class contains a loaded tile set
+// The tile map class contains a loaded tile set\
 // and a 2d array of the map.
 // Each index in the map corresponds to a specific tile.
 
 package com.neet.DiamondHunter.TileMap;
 
 import java.awt.Graphics2D;
+
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 
@@ -52,21 +54,27 @@ public class TileMap {
 	public TileMap(int tileSize) {
 		this.tileSize = tileSize;
 		numRowsToDraw = GamePanel.HEIGHT / tileSize + 2;
+		System.out.println("number of rows to draw "+numRowsToDraw);
 		numColsToDraw = GamePanel.WIDTH / tileSize + 2;
+		System.out.println("number of colums  to draw "+numColsToDraw);
 		speed = 4;
 	}
 	
-	public void loadTiles(String s) {
+public void loadTiles(String s) {
 		
 		try {
 
 			tileset = ImageIO.read(
 				getClass().getResourceAsStream(s)
 			);
+			System.out.println("the size of the tiles are "+tileSize);
 			numTilesAcross = tileset.getWidth() / tileSize;
+			System.out.println("number of tiles to be drawn across ,tiles accross'= "+numTilesAcross);
 			tiles = new Tile[2][numTilesAcross];
+			System.out.println("tiles "+Arrays.toString(tiles));
 			
 			BufferedImage subimage;
+		
 			for(int col = 0; col < numTilesAcross; col++) {
 				subimage = tileset.getSubimage(
 							col * tileSize,
@@ -82,10 +90,11 @@ public class TileMap {
 							tileSize
 						);
 				tiles[1][col] = new Tile(subimage, Tile.BLOCKED);
-			}
+		}
 			
 		}
 		catch(Exception e) {
+			
 			e.printStackTrace();
 		}
 		
@@ -102,8 +111,10 @@ public class TileMap {
 			
 			numCols = Integer.parseInt(br.readLine());
 			numRows = Integer.parseInt(br.readLine());
+			System.out.println(numCols+"  "+numRows);
 			map = new int[numRows][numCols];
 			width = numCols * tileSize;
+			System.out.println("width is "+width);
 			height = numRows * tileSize;
 			
 			xmin = GamePanel.WIDTH - width;
@@ -114,11 +125,16 @@ public class TileMap {
 			ymax = 0;
 			
 			String delims = "\\s+";
+			System.out.println("token");
 			for(int row = 0; row < numRows; row++) {
-				String line = br.readLine();
+				String line = br.readLine();			
 				String[] tokens = line.split(delims);
+				System.out.println(Arrays.toString(tokens));
 				for(int col = 0; col < numCols; col++) {
-					map[row][col] = Integer.parseInt(tokens[col]);
+					//System.out.printf(" "+Integer.parseInt(tokens[col]));
+				
+	
+					map[row][col] =Integer.parseInt(tokens[col]);
 				}
 			}
 			
@@ -128,7 +144,7 @@ public class TileMap {
 		}
 		
 	}
-	
+
 	public int getTileSize() { return tileSize; }
 	public int getx() { return x; }
 	public int gety() { return y; }
@@ -145,6 +161,7 @@ public class TileMap {
 	public int getIndex(int row, int col) {
 		return map[row][col];
 	}
+	
 	public boolean isMoving() { return moving; }
 	
 	public void setTile(int row, int col, int index) {

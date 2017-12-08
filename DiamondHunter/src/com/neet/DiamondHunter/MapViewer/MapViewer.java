@@ -1,6 +1,7 @@
 package com.neet.DiamondHunter.MapViewer;
 
 import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -47,7 +48,7 @@ public class MapViewer implements Initializable {
 		for (int col = 0; col < 2; col++) {
 			itemss[col] = new WritableImage(setTile.getPixelReader(), col * tileSize, 16,
 
-					tileSize, tileSize);
+					tileSize, tileSize);  
 		}
 	}
 
