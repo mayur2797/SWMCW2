@@ -99,10 +99,10 @@ public class MapViewer implements Initializable {
 					boaty.setText(Integer.toString(boatY));*/
 					first_boat = false;
 					gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-					
+					boat.setLayoutX((boatX + 1) * 16 + 3);
+					boat.setLayoutY((boatY + 1) * 16);
 				}
-				boat.setLayoutX((boatX + 1) * 16 + 3);
-				boat.setLayoutY((boatY + 1) * 16);
+				
 			}
 		});
 
