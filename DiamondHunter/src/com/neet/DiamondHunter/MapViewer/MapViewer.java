@@ -1,6 +1,7 @@
 package com.neet.DiamondHunter.MapViewer;
 
 import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -179,9 +180,7 @@ public class MapViewer implements Initializable {
 		Image setTile = new Image(s);
 		itemss = new Image[2];
 		for (int col = 0; col < 2; col++) {
-			itemss[col] = new WritableImage(setTile.getPixelReader(), col * tileSize, 16,
-
-					tileSize, tileSize);
+			itemss[col] = new WritableImage(setTile.getPixelReader(), col * tileSize, 16,tileSize, tileSize);  
 		}
 	}
 
@@ -279,7 +278,7 @@ public class MapViewer implements Initializable {
 	@FXML
 	public Canvas canvas;
 
-	/*@FXML
+	@FXML
 	private TextField axex;
 
 	@FXML
@@ -301,6 +300,17 @@ public class MapViewer implements Initializable {
 	private Button boat;
 	
 
+<<<<<<< HEAD
 	/*@FXML
 	private Button axe;*/
+=======
+<<<<<<< HEAD
+	@FXML
+	private Button axe;
+
+=======
+	/*@FXML
+	private Button axe;*/
+>>>>>>> master
+>>>>>>> mapgen
 }

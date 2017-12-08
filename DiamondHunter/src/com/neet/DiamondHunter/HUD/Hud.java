@@ -54,7 +54,7 @@ public class Hud {
 		
 		// draw diamond bar
 		g.setColor(textColor);
-		g.fillRect(8, yoffset + 6, (int)(28.0 * player.numDiamonds() / numDiamonds), 4);
+		g.fillRect(8, yoffset + 6, (int)(28.0 * player.numDiamonds() / numDiamonds), 44);
 		
 		// draw diamond amount
 		g.setColor(textColor);
