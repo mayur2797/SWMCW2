@@ -175,9 +175,7 @@ public class MapViewer implements Initializable {
 		Image setTile = new Image(s);
 		itemss = new Image[2];
 		for (int col = 0; col < 2; col++) {
-			itemss[col] = new WritableImage(setTile.getPixelReader(), col * tileSize, 16,
-
-					tileSize, tileSize);  
+			itemss[col] = new WritableImage(setTile.getPixelReader(), col * tileSize, 16,tileSize, tileSize);  
 		}
 	}
 
@@ -275,7 +273,7 @@ public class MapViewer implements Initializable {
 	@FXML
 	public Canvas canvas;
 
-	/*@FXML
+	@FXML
 	private TextField axex;
 
 	@FXML
@@ -298,5 +296,5 @@ public class MapViewer implements Initializable {
 
 	@FXML
 	private Button axe;
-*/
+
 }

@@ -5,6 +5,17 @@
 package com.neet.DiamondHunter.TileMap;
 
 import java.awt.Graphics2D;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
+import javafx.stage.Stage;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -14,7 +25,17 @@ import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import com.neet.DiamondHunter.Main.GamePanel;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 
 public class TileMap {
 	
@@ -72,7 +93,7 @@ public void loadTiles(String s) {
 			System.out.println("number of tiles to be drawn across ,tiles accross'= "+numTilesAcross);
 			tiles = new Tile[2][numTilesAcross];
 			System.out.println("tiles "+Arrays.toString(tiles));
-			
+			Image setTile = new Image(s);
 			BufferedImage subimage;
 		
 			for(int col = 0; col < numTilesAcross; col++) {
@@ -130,10 +151,7 @@ public void loadTiles(String s) {
 				String line = br.readLine();			
 				String[] tokens = line.split(delims);
 				System.out.println(Arrays.toString(tokens));
-				for(int col = 0; col < numCols; col++) {
-					//System.out.printf(" "+Integer.parseInt(tokens[col]));
-				
-	
+				for(int col = 0; col < numCols; col++) {	
 					map[row][col] =Integer.parseInt(tokens[col]);
 				}
 			}
@@ -256,22 +274,4 @@ public void loadTiles(String s) {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
