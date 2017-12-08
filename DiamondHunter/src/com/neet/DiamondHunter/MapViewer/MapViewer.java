@@ -52,7 +52,7 @@ public class MapViewer implements Initializable {
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 		// Objects on GUI
 
-		boat.setLayoutX(save_boatY + 19);
+		boat.setLayoutX((save_boatY + 19));
 		boat.setLayoutY(save_boatX + 16);
 		boat.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 			@Override
@@ -60,8 +60,8 @@ public class MapViewer implements Initializable {
 				select = 1;
 			}
 		});
-/*
-		axe.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
+
+		/*axe.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 			@Override
 			public void handle(javafx.scene.input.MouseEvent event) {
 				select = 0;
@@ -103,6 +103,7 @@ public class MapViewer implements Initializable {
 					boat.setLayoutX((boatX + 1) * 16 + 3);
 					boat.setLayoutY((boatY + 1) * 16);
 				}
+				
 			}
 		});
 
@@ -179,9 +180,7 @@ public class MapViewer implements Initializable {
 		Image setTile = new Image(s);
 		itemss = new Image[2];
 		for (int col = 0; col < 2; col++) {
-			itemss[col] = new WritableImage(setTile.getPixelReader(), col * tileSize, 16,
-
-					tileSize, tileSize);
+			itemss[col] = new WritableImage(setTile.getPixelReader(), col * tileSize, 16,tileSize, tileSize);  
 		}
 	}
 
@@ -279,7 +278,7 @@ public class MapViewer implements Initializable {
 	@FXML
 	public Canvas canvas;
 
-	/*@FXML
+	@FXML
 	private TextField axex;
 
 	@FXML
@@ -296,10 +295,22 @@ public class MapViewer implements Initializable {
 
 	@FXML
 	private TextField boaty;*/
+
 	@FXML
 	private Button boat;
+	
 
-	//@FXML
-	//private Button axe;
+<<<<<<< HEAD
+	/*@FXML
+	private Button axe;*/
+=======
+<<<<<<< HEAD
+	@FXML
+	private Button axe;
 
+=======
+	/*@FXML
+	private Button axe;*/
+>>>>>>> master
+>>>>>>> mapgen
 }
