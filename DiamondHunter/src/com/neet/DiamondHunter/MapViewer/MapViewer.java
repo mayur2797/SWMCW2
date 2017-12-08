@@ -51,14 +51,16 @@ public class MapViewer implements Initializable {
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 		// Objects on GUI
 
-		/*boat.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
+		boat.setLayoutX((save_boatY + 19));
+		boat.setLayoutY(save_boatX + 16);
+		boat.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 			@Override
 			public void handle(javafx.scene.input.MouseEvent event) {
 				select = 1;
 			}
 		});
 
-		axe.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
+		/*axe.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 			@Override
 			public void handle(javafx.scene.input.MouseEvent event) {
 				select = 0;
@@ -97,7 +99,10 @@ public class MapViewer implements Initializable {
 					boaty.setText(Integer.toString(boatY));*/
 					first_boat = false;
 					gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+					
 				}
+				boat.setLayoutX((boatX + 1) * 16 + 3);
+				boat.setLayoutY((boatY + 1) * 16);
 			}
 		});
 
@@ -290,12 +295,12 @@ public class MapViewer implements Initializable {
 	private TextField boatx;
 
 	@FXML
-	private TextField boaty;
+	private TextField boaty;*/
 
 	@FXML
 	private Button boat;
+	
 
-	@FXML
-	private Button axe;
-*/
+	/*@FXML
+	private Button axe;*/
 }
