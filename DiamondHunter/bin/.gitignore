@@ -1,7 +1,18 @@
+/HUD/
+/Logo/
+/Maps/
+/Music/
 /com/
+<<<<<<< HEAD
 <<<<<<< HEAD
 /Maps/
 /Tilesets/
 /testtileset.gif
 =======
 >>>>>>> a42a1e050513210cbc6758226dc310436bf81310
+=======
+/desktop.ini
+/SFX/
+/Sprites/
+/Tilesets/
+>>>>>>> master
