@@ -59,13 +59,16 @@ public class MapViewer implements Initializable {
 				select = 1;
 			}
 		});
-
-		/*axe.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
+		
+		
+		axe.setLayoutX((save_axeY + 19));
+		axe.setLayoutY(save_axeX + 16);
+		axe.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 			@Override
 			public void handle(javafx.scene.input.MouseEvent event) {
 				select = 0;
 			}
-		});*/
+		});
 
 		canvas.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 			@Override
@@ -85,6 +88,8 @@ public class MapViewer implements Initializable {
 					axey.setText(Integer.toString(axeY));*/
 					first_axe = false;
 					gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+					axe.setLayoutX((axeX+1) * 16 + 3);
+					axe.setLayoutY((axeY+1) * 16);
 				} else {
 					draw(gg);
 					if (first_axe) {
@@ -301,6 +306,6 @@ public class MapViewer implements Initializable {
 	private Button boat;
 	
 
-	/*@FXML
-	private Button axe;*/
+	@FXML
+	private Button axe;
 }
