@@ -62,7 +62,7 @@ public class MapViewer implements Initializable {
 		
 		
 		axe.setLayoutX((save_axeY + 19));
-		axe.setLayoutY(save_axeX + 16);
+		axe.setLayoutY(save_axeX + 15);
 		axe.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 			@Override
 			public void handle(javafx.scene.input.MouseEvent event) {
@@ -89,7 +89,7 @@ public class MapViewer implements Initializable {
 					first_axe = false;
 					gg.drawImage(itemss[1], axeX * 16, axeY * 16);
 					axe.setLayoutX((axeX+1) * 16 + 3);
-					axe.setLayoutY((axeY+1) * 16);
+					axe.setLayoutY((axeY) * 16 + 15);
 				} else {
 					draw(gg);
 					if (first_axe) {

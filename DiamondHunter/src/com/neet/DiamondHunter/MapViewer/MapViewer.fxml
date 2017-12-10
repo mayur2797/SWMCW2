@@ -14,6 +14,10 @@
             <Font size="10.0" />
          </font>
       </Button>
-      <Button id="axe" fx:id="axe" layoutX="92.0" layoutY="-1.0" minHeight="16.0" minWidth="16.0" mnemonicParsing="false" opacity="0.26" prefHeight="16.0" prefWidth="16.0" />
+      <Button id="boat" fx:id="axe" layoutX="64.0" maxHeight="16.0" maxWidth="16.0" minHeight="16.0" minWidth="16.0" mnemonicParsing="false" opacity="0.37" prefHeight="16.0" prefWidth="16.0" style="-fx-border-color: red;">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
