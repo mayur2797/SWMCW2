@@ -88,7 +88,7 @@ public class MapViewer implements Initializable {
 					axey.setText(Integer.toString(axeY));*/
 					first_axe = false;
 					gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-					axe.setLayoutX((axeX+1) * 16 + 383);
+					axe.setLayoutX((axeX) * 16 + 383);
 					axe.setLayoutY((axeY) * 16 + 64);
 				} else {
 					draw(gg);
@@ -104,8 +104,8 @@ public class MapViewer implements Initializable {
 					boaty.setText(Integer.toString(boatY));*/
 					first_boat = false;
 					gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-					boat.setLayoutX((boatX + 1) * 16 + 383);
-					boat.setLayoutY((boatY + 1) * 16 + 64);
+					boat.setLayoutX((boatX) * 16 + 383);
+					boat.setLayoutY((boatY) * 16 + 64);
 				}
 				
 			}
