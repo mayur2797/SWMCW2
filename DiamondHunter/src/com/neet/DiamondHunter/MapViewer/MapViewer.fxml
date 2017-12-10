@@ -5,16 +5,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neet.DiamondHunter.MapViewer.MapViewer">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="680.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neet.DiamondHunter.MapViewer.MapViewer">
    <children>
-      <Canvas fx:id="canvas" height="639.0" layoutX="19.0" layoutY="15.0" width="640.0" />
+      <Canvas fx:id="canvas" height="640.0" layoutX="19.0" layoutY="15.0" width="640.0" />
       <Button id="boat" fx:id="boat" maxHeight="16.0" maxWidth="16.0" minHeight="16.0" minWidth="16.0" mnemonicParsing="false" opacity="0.37" prefHeight="16.0" prefWidth="16.0" style="-fx-border-color: red;">
       
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button id="boat" fx:id="axe" layoutX="64.0" maxHeight="16.0" maxWidth="16.0" minHeight="16.0" minWidth="16.0" mnemonicParsing="false" opacity="0.37" prefHeight="16.0" prefWidth="16.0" style="-fx-border-color: red;">
+      <Button id="axe" fx:id="axe" layoutX="64.0" maxHeight="16.0" maxWidth="16.0" minHeight="16.0" minWidth="16.0" mnemonicParsing="false" opacity="0.37" prefHeight="16.0" prefWidth="16.0" style="-fx-border-color: red;">
          <font>
             <Font size="10.0" />
          </font>
