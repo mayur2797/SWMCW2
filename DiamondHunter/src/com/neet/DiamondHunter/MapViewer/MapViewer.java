@@ -26,7 +26,6 @@ public class MapViewer implements Initializable {
 	 * public MapViewer() { // TODO Auto-generated constructor stub }
 	 */
 
-	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -58,7 +57,6 @@ public class MapViewer implements Initializable {
 		boat.setLayoutX((save_boatY + 383));
 		boat.setLayoutY(save_boatX + 64);
 		boat.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
-			@Override
 			public void handle(javafx.scene.input.MouseEvent event) {
 				select = 1;
 			}
@@ -68,14 +66,14 @@ public class MapViewer implements Initializable {
 		axe.setLayoutX((save_axeY + 383));
 		axe.setLayoutY(save_axeX + 64);
 		axe.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
-			@Override
+		
 			public void handle(javafx.scene.input.MouseEvent event) {
 				select = 0;
 			}
 		});
 
 		canvas.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
-			@Override
+
 			public void handle(javafx.scene.input.MouseEvent e) {
 				GraphicsContext gg = canvas.getGraphicsContext2D();
 				if (select == 0) {
