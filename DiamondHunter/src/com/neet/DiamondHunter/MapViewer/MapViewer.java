@@ -45,10 +45,17 @@ public class MapViewer implements Initializable {
 		g.drawImage(itemss[1], save_axeY, save_axeX);
 		// Set TextField to default/initial value
 		
+<<<<<<< HEAD
 		x_Axe.setText(Integer.toString(save_axeX / 16));
 		y_Axe.setText(Integer.toString(save_axeY / 16));
 		x_Boat.setText(Integer.toString(save_boatX / 16));
 		y_Boat.setText(Integer.toString(save_boatY / 16));
+=======
+		y_Axe.setText(Integer.toString(save_axeX / 16));
+		x_Axe.setText(Integer.toString(save_axeY / 16));
+		y_Boat.setText(Integer.toString(save_boatX / 16));
+		x_Boat.setText(Integer.toString(save_boatY / 16));
+>>>>>>> a30f00de7c379dab7028ceb64f85da1ab2ed5818
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 		// Objects on GUI
@@ -290,7 +297,10 @@ public class MapViewer implements Initializable {
 	@FXML
 	private TextField x_Axe;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a30f00de7c379dab7028ceb64f85da1ab2ed5818
 	@FXML
 	private Button savebutton;
 
@@ -300,6 +310,7 @@ public class MapViewer implements Initializable {
 	@FXML
 	private Button resetbutton;
 
+<<<<<<< HEAD
 	//@FXML
 	//private Button save;
 
@@ -311,7 +322,17 @@ public class MapViewer implements Initializable {
 	@FXML
 	private Button back;
 
+=======
+<<<<<<< HEAD
 
+
+	@FXML
+	private Button back;
+>>>>>>> a30f00de7c379dab7028ceb64f85da1ab2ed5818
+
+
+=======
+>>>>>>> 1c534a0c7f765b1c5c051bf5e7ac9740a3984668
 	@FXML
 	private TextField y_Axe;
 
@@ -323,7 +344,6 @@ public class MapViewer implements Initializable {
 
 	@FXML
 	private Button boat;
-	
 
 	@FXML
 	private Button axe;

@@ -85,7 +85,7 @@ public class MenuState extends GameState {
 		}
 		if(currentOption == 1) {
 			String[] args = null;
-			Application.launch(Main.class, args);;
+			Application.launch(Main.class, args);
 		}
 		if(currentOption == 2) {
 			System.exit(0);
