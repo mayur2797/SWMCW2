@@ -8,9 +8,9 @@ import javax.swing.JFrame;
 
 public class Game {
 	
-	/*public static void main(String[] args) {
+public static void main(String[] args) {
 		
-		JFrame window = new JFrame("Diamond Hunter");
+		/*JFrame window = new JFrame("Diamond Hunter");
 		
 		window.add(new GamePanel());
 		
@@ -19,8 +19,8 @@ public class Game {
 		
 		window.setLocationRelativeTo(null);
 		window.setVisible(true);
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
 		
-	}*/
+	}
 	
 }
