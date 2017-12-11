@@ -116,7 +116,7 @@ public class MapViewer implements Initializable {
 		});
 	}
 
-		save.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
+		/*save.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 			@Override
 			public void handle(javafx.scene.input.MouseEvent event) {
 				 if(first_boat==false){
@@ -171,15 +171,14 @@ public class MapViewer implements Initializable {
 					throw new MyException("Boat cannot be placed into water");
 				}
 			}
-		});
-	}
+		});*/
 
-	@FXML
+	/*@FXML
 	public void back() throws Exception {
 		Scene scene = back.getScene();
 		Stage currentscene = (Stage) scene.getWindow();
 		currentscene.hide();
-	}
+	}*/
 
 	//////////////////////////////////////////////////
 	// Methods to extract images from resources
@@ -292,10 +291,6 @@ public class MapViewer implements Initializable {
 	@FXML
 	private TextField x_Axe;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> f02cfcd27ffb1191d303bf20e30c3e3ec8b4d839
 	@FXML
 	private Button savebutton;
 
@@ -305,27 +300,7 @@ public class MapViewer implements Initializable {
 	@FXML
 	private Button resetbutton;
 
-<<<<<<< HEAD
 
-	//@FXML
-	//private Button save;
-
-	//@FXML
-	//private Button back;
-//	@FXML
-//	//private Button save;
-//
-	//@FXML
-//	private Button back;
-
-
-
-
-	@FXML
-	private Button back;
-
-=======
->>>>>>> f02cfcd27ffb1191d303bf20e30c3e3ec8b4d839
 	@FXML
 	private TextField y_Axe;
 
