@@ -27,9 +27,12 @@
             <Font size="10.0" />
          </font>
       </Button>
-      <TextField fx:id="axex" layoutX="181.0" layoutY="306.0" prefHeight="24.0" prefWidth="41.0" />
-      <TextField fx:id="axey" layoutX="260.0" layoutY="306.0" prefHeight="24.0" prefWidth="41.0" />
-      <TextField fx:id="boatx" layoutX="181.0" layoutY="369.0" prefHeight="24.0" prefWidth="41.0" />
-      <TextField fx:id="boaty" layoutX="260.0" layoutY="369.0" prefHeight="24.0" prefWidth="41.0" />
+      <TextField layoutX="181.0" layoutY="306.0" prefHeight="24.0" prefWidth="41.0" fx:id="x_Axe" />
+      <TextField fx:id="y_Axe" layoutX="260.0" layoutY="306.0" prefHeight="24.0" prefWidth="41.0" />
+      <TextField layoutX="181.0" layoutY="369.0" prefHeight="24.0" prefWidth="41.0" fx:id="x_Boat" />
+      <TextField fx:id="y_Boat" layoutX="260.0" layoutY="369.0" prefHeight="24.0" prefWidth="41.0" />
+      <Button fx:id="savebutton" layoutX="150.0" layoutY="484.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" />
+      <Button fx:id="resetbutton" layoutX="150.0" layoutY="543.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" />
+      <Button fx:id="backbutton" layoutX="150.0" layoutY="605.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" />
    </children>
 </AnchorPane>
