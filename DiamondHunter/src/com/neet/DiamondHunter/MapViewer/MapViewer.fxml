@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="764.0" maxWidth="1086.0" minHeight="764.0" minWidth="1086.0" prefHeight="764.0" prefWidth="1086.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neet.DiamondHunter.MapViewer.MapViewer">
+<AnchorPane maxHeight="764.0" maxWidth="1142.0" minHeight="750.0" minWidth="1075.0" prefHeight="752.0" prefWidth="1075.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neet.DiamondHunter.MapViewer.MapViewer">
    <children>
 
       <ImageView fitHeight="764.0" fitWidth="1086.0">
