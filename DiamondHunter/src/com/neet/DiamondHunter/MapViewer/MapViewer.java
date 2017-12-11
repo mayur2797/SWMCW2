@@ -284,14 +284,14 @@ public class MapViewer implements Initializable {
 	@FXML
 	public Canvas canvas;
 
-	/*@FXML
+	@FXML
 	private TextField axex;
 
 	@FXML
-	private Button save;
+	//private Button save;
 
 	@FXML
-	private Button back;
+	//private Button back;
 
 	@FXML
 	private TextField axey;
@@ -300,7 +300,7 @@ public class MapViewer implements Initializable {
 	private TextField boatx;
 
 	@FXML
-	private TextField boaty;*/
+	private TextField boaty;
 
 	@FXML
 	private Button boat;
