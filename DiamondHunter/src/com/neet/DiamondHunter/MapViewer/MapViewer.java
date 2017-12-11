@@ -287,10 +287,10 @@ public class MapViewer implements Initializable {
 	@FXML
 	private TextField axex;
 
-	@FXML
+	//@FXML
 	//private Button save;
 
-	@FXML
+	//@FXML
 	//private Button back;
 
 	@FXML
