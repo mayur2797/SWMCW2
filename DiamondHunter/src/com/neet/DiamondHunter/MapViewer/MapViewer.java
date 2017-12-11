@@ -292,7 +292,10 @@ public class MapViewer implements Initializable {
 	@FXML
 	private TextField x_Axe;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f02cfcd27ffb1191d303bf20e30c3e3ec8b4d839
 	@FXML
 	private Button savebutton;
 
@@ -302,6 +305,7 @@ public class MapViewer implements Initializable {
 	@FXML
 	private Button resetbutton;
 
+<<<<<<< HEAD
 
 	//@FXML
 	//private Button save;
@@ -320,6 +324,8 @@ public class MapViewer implements Initializable {
 	@FXML
 	private Button back;
 
+=======
+>>>>>>> f02cfcd27ffb1191d303bf20e30c3e3ec8b4d839
 	@FXML
 	private TextField y_Axe;
 
