@@ -5,6 +5,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neet.DiamondHunter.MapViewer.MapViewer">
    <children>
-      <Canvas fx:id="canvas" height="576.0" layoutX="37.0" layoutY="52.0" width="607.0" />
+      <Canvas fx:id="canvas" height="640.0" layoutX="14.0" layoutY="14.0" width="640.0" />
    </children>
 </AnchorPane>
