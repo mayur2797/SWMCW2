@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 import com.neet.DiamondHunter.Main.GamePanel;
+import com.neet.DiamondHunter.Main.Main;
 import com.neet.DiamondHunter.Manager.Content;
 import com.neet.DiamondHunter.Manager.GameStateManager;
 import com.neet.DiamondHunter.Manager.JukeBox;
@@ -21,6 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.WindowEvent;
+import javafx.application.Application;
 
 public class MenuState extends GameState {
 	
@@ -30,7 +32,7 @@ public class MenuState extends GameState {
 	private int currentOption = 0;
 	private String[] options = {
 		"START",
-		"EDIT",
+		"EDIT MAP",
 		"QUIT"
 	};
 	
@@ -53,13 +55,13 @@ public class MenuState extends GameState {
 		
 		g.drawImage(bg, 0, 0, null);
 		
-		Content.drawString(g, options[0], 44, 90);
-		Content.drawString(g, options[1], 48, 100);
+		Content.drawString(g, options[0], 44, 70);
+		Content.drawString(g, options[1], 36, 90);
 		Content.drawString(g, options[2], 48, 110);
 		
-		if(currentOption == 0) g.drawImage(diamond, 25, 86, null);
-		else if(currentOption == 1) g.drawImage(diamond, 25, 96, null);
-		else if(currentOption == 2) g.drawImage(diamond, 25, 106, null);	
+		if(currentOption == 0) g.drawImage(diamond, 28, 66, null);
+		else if(currentOption == 1) g.drawImage(diamond, 20, 86, null);
+		else if(currentOption == 2) g.drawImage(diamond, 30, 106, null);	
 	}
 	
 	public void handleInput() {
@@ -82,7 +84,8 @@ public class MenuState extends GameState {
 			gsm.setState(GameStateManager.PLAY);
 		}
 		if(currentOption == 1) {
-		
+			String[] args = null;
+			Application.launch(Main.class, args);;
 		}
 		if(currentOption == 2) {
 			System.exit(0);
