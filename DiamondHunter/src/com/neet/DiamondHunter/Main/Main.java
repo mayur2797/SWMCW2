@@ -11,7 +11,7 @@ import javafx.fxml.FXMLLoader;
 
 
 public class Main extends Application {
-	@Override
+	
 	public void start(Stage primaryStage) {
 		try {
 			System.out.println("Test!");
@@ -31,6 +31,7 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
+
 	
 	public static void main(String[] args) {
 		launch(args);
