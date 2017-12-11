@@ -290,19 +290,18 @@ public class MapViewer implements Initializable {
 	@FXML
 	private TextField axex;
 
-<<<<<<< HEAD
+
 	//@FXML
 	//private Button save;
 
 	//@FXML
 	//private Button back;
-=======
+
 //	@FXML
 //	//private Button save;
 //
 	@FXML
 	private Button back;
->>>>>>> 0eefc2d77e39eb3966805d0b75f903564ba2384d
 
 	@FXML
 	private TextField axey;
