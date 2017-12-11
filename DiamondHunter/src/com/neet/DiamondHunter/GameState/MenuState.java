@@ -53,13 +53,13 @@ public class MenuState extends GameState {
 		
 		g.drawImage(bg, 0, 0, null);
 		
-		Content.drawString(g, options[0], 44, 80);
-		Content.drawString(g, options[1], 48, 90);
-		Content.drawString(g, options[2], 48, 100);
+		Content.drawString(g, options[0], 44, 70);
+		Content.drawString(g, options[1], 36, 90);
+		Content.drawString(g, options[2], 48, 110);
 		
-		if(currentOption == 0) g.drawImage(diamond, 28, 76, null);
-		else if(currentOption == 1) g.drawImage(diamond, 28, 86, null);
-		else if(currentOption == 2) g.drawImage(diamond, 28, 96, null);	
+		if(currentOption == 0) g.drawImage(diamond, 28, 66, null);
+		else if(currentOption == 1) g.drawImage(diamond, 20, 86, null);
+		else if(currentOption == 2) g.drawImage(diamond, 30, 106, null);	
 	}
 	
 	public void handleInput() {
