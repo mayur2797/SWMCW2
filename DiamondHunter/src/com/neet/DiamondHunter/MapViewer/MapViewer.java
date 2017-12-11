@@ -299,15 +299,9 @@ public class MapViewer implements Initializable {
 	@FXML
 	private Button resetbutton;
 
-<<<<<<< HEAD
-
-
 	@FXML
 	private Button back;
 
-
-=======
->>>>>>> 1c534a0c7f765b1c5c051bf5e7ac9740a3984668
 	@FXML
 	private TextField y_Axe;
 
