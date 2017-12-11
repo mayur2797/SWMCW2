@@ -1,4 +1,3 @@
-// This class takes in an array of images.
 // Calling getImage() gives you the appropriate
 // image in the animation cycle.
 
