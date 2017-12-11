@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 import com.neet.DiamondHunter.Main.GamePanel;
+import com.neet.DiamondHunter.Main.Main;
 import com.neet.DiamondHunter.Manager.Content;
 import com.neet.DiamondHunter.Manager.GameStateManager;
 import com.neet.DiamondHunter.Manager.JukeBox;
@@ -21,6 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.WindowEvent;
+import javafx.application.Application;
 
 public class MenuState extends GameState {
 	
@@ -82,7 +84,8 @@ public class MenuState extends GameState {
 			gsm.setState(GameStateManager.PLAY);
 		}
 		if(currentOption == 1) {
-		
+			String[] args = null;
+			Application.launch(Main.class, args);;
 		}
 		if(currentOption == 2) {
 			System.exit(0);
