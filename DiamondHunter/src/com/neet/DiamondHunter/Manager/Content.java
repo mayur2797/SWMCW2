@@ -11,14 +11,14 @@ import javax.imageio.ImageIO;
 
 public class Content {
 	
-	public static BufferedImage[][] MENUBG = load("/HUD/menu.gif", 128, 144);
+	public static BufferedImage[][] MENUBG = load("/HUD/menuscreen.gif", 128, 144);
 	public static BufferedImage[][] BAR = load("/HUD/bar.gif", 128, 16);
 	
 	public static BufferedImage[][] PLAYER = load("/Sprites/playersprites.gif", 16, 16);
 	public static BufferedImage[][] DIAMOND = load("/Sprites/diamond.gif", 16, 16);
 	public static BufferedImage[][] SPARKLE = load("/Sprites/sparkle.gif", 16, 16);
 	public static BufferedImage[][] ITEMS = load("/Sprites/items.gif", 16, 16);
-	
+	public static BufferedImage[][] SNOW = load("/Sprites/snow.gif", 20, 20);
 	public static BufferedImage[][] font = load("/HUD/font.gif", 8, 8);
 	
 	public static BufferedImage[][] load(String s, int w, int h) {
