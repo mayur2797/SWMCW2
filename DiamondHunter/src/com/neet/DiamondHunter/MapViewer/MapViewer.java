@@ -1,6 +1,8 @@
 package com.neet.DiamondHunter.MapViewer;
 
 import javafx.event.EventHandler;
+import java.awt.event.*;
+import java.awt.event.KeyEvent;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,6 +16,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 
+import javafx.scene.input.*;
+import javafx.scene.input.KeyCode;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -25,10 +29,10 @@ import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-//import com.neet.DiamondHunter.TileMapEditor.Alerts;
-//import com.neet.DiamondHunter.TileMapEditor.MyException;
+import com.neet.DiamondHunter.Manager.Keys;
 
-public class MapViewer implements Initializable {
+public class MapViewer implements Initializable{
+
 
 	/*
 	 * public MapViewer() { // TODO Auto-generated constructor stub }
@@ -42,8 +46,7 @@ public class MapViewer implements Initializable {
 		/*Alert saved = new Alert(Alert.AlertType.INFORMATION);
 		saved.setTitle("Axe and Boat");
 		saved.setHeaderText("Changes has been saved.");*/
-		
-		
+
 
 		readfromfile();
 		
@@ -59,10 +62,11 @@ public class MapViewer implements Initializable {
 		// Set TextField to default/initial value
 		
 
-		x_Axe.setText(Integer.toString(save_axeX / 16));
 		y_Axe.setText(Integer.toString(save_axeY / 16));
-		x_Boat.setText(Integer.toString(save_boatX / 16));
+		x_Axe.setText(Integer.toString(save_axeX / 16));
 		y_Boat.setText(Integer.toString(save_boatY / 16));
+		x_Boat.setText(Integer.toString(save_boatX / 16));
+		
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -85,6 +89,7 @@ public class MapViewer implements Initializable {
 				select = 0;
 			}
 		});
+	
 
 		canvas.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 
@@ -100,12 +105,13 @@ public class MapViewer implements Initializable {
 					}
 					axeX = (int) e.getX() / 16;
 					axeY = (int) e.getY() / 16;
-					x_Axe.setText(Integer.toString(axeX));
+				    x_Axe.setText(Integer.toString(axeX));
 					y_Axe.setText(Integer.toString(axeY));
 					first_axe = false;
 					gg.drawImage(itemss[1], axeX * 16, axeY * 16);
 					axe.setLayoutX((axeX) * 16 + 383);
 					axe.setLayoutY((axeY) * 16 + 64);
+					
 				} else {
 					draw(gg);
 					if (first_axe) {
@@ -120,13 +126,105 @@ public class MapViewer implements Initializable {
 					y_Boat.setText(Integer.toString(boatY));
 					first_boat = false;
 					gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+					
 					boat.setLayoutX((boatX) * 16 + 383);
 					boat.setLayoutY((boatY) * 16 + 64);
 				}
 				
 			}
 		});
+
+		
+		x_Axe.textProperty().addListener((observable, oldValue, newValue) -> {
+			GraphicsContext gg = canvas.getGraphicsContext2D();
+			try{
+				draw(gg);
+		   // System.out.println("TextField Text Changed (newValue: " + newValue + ")");
+		    
+		    axeX=Integer.parseInt(x_Axe.getText());
+			gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+			gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+			//gg.drawImage(itemss[0], save_boatX, save_boatY);
+			axe.setLayoutX((axeX) * 16 + 383);
+			axe.setLayoutY((axeY) * 16 + 64);
+			}
+			
+			catch (NullPointerException e){
+				
+			}
+			
+			catch(NumberFormatException e){
+				
+			};
+		});
+		
+		y_Axe.textProperty().addListener((observable, oldValue, newValue) -> {
+			GraphicsContext gg = canvas.getGraphicsContext2D();
+			try{
+				draw(gg);
+		//    System.out.println("TextField Text Changed (newValue: " + newValue + ")");
+		    axeY=Integer.parseInt(y_Axe.getText());
+		    gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+		    gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+			axe.setLayoutX((axeX) * 16 + 383);
+			axe.setLayoutY((axeY) * 16 + 64);
 	
+			}
+			
+			catch (NullPointerException e){
+				
+			}
+			
+			catch(NumberFormatException e){
+				
+			};
+		});
+		
+		
+		x_Boat.textProperty().addListener((observable, oldValue, newValue) -> {
+			GraphicsContext gg = canvas.getGraphicsContext2D();
+			try{
+				draw(gg);
+		//    System.out.println("TextField Text Changed (newValue: " + newValue + ")");
+			boatX=Integer.parseInt(x_Boat.getText());
+		    gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+		    gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+			boat.setLayoutX((boatX) * 16 + 383);
+			boat.setLayoutY((boatY) * 16 + 64);
+	
+			}
+			
+			catch (NullPointerException e){
+				
+			}
+			
+			catch(NumberFormatException e){
+				
+			};
+		});
+		
+		y_Boat.textProperty().addListener((observable, oldValue, newValue) -> {
+			GraphicsContext gg = canvas.getGraphicsContext2D();
+			try{
+				draw(gg);
+		//    System.out.println("TextField Text Changed (newValue: " + newValue + ")");
+			boatY=Integer.parseInt(y_Boat.getText());
+		    gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+		    gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+			boat.setLayoutX((boatX) * 16 + 383);
+			boat.setLayoutY((boatY) * 16 + 64);
+	
+			}
+			
+			catch (NullPointerException e){
+				
+			}
+			
+			catch(NumberFormatException e){
+				
+			};
+		});
+
 
 	savebutton.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 		public void handle(javafx.scene.input.MouseEvent event) {
@@ -145,7 +243,9 @@ public class MapViewer implements Initializable {
 				save_boatY = boatY * 16;
 				save_boatX = boatX * 16;
 				
+
 				savetofile();
+
 				
 				
 				System.out.println("Changes saved");
@@ -319,13 +419,12 @@ public class MapViewer implements Initializable {
 	//////////////////////////////////////////////////
 
 	// Variables Declaration
+
+	private int axeX = 37, axeY = 26, boatX = 4, boatY = 12;
 	
 	String fileName = "coordinates.txt";
-	
-	
-	
-	private int axeX = 26, axeY = 37, boatX = 12, boatY = 4;
-	
+
+
 	int select = 0;
 	boolean first_boat = true, first_axe = true;
 
@@ -338,6 +437,8 @@ public class MapViewer implements Initializable {
 	private Image[] itemss;
 	public Image image;
 	private int numTilesAcross;
+	
+	
 
 	///////////////////////////////////////////////////////
 	@FXML
