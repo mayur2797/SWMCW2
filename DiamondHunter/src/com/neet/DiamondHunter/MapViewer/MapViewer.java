@@ -1,6 +1,8 @@
 package com.neet.DiamondHunter.MapViewer;
 
 import javafx.event.EventHandler;
+import java.awt.event.*;
+import java.awt.event.KeyEvent;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,13 +16,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 
+import javafx.scene.input.*;
+import javafx.scene.input.KeyCode;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MapViewer implements Initializable {
+import com.neet.DiamondHunter.Manager.Keys;
+
+public class MapViewer implements Initializable{
 
 	/*
 	 * public MapViewer() { // TODO Auto-generated constructor stub }
@@ -32,6 +38,7 @@ public class MapViewer implements Initializable {
 		/*Alert saved = new Alert(Alert.AlertType.INFORMATION);
 		saved.setTitle("Axe and Boat");
 		saved.setHeaderText("Changes has been saved.");*/
+		
 
 		GraphicsContext g = canvas.getGraphicsContext2D();
 		loadTiles("/Tilesets/testtileset.gif");
@@ -49,6 +56,7 @@ public class MapViewer implements Initializable {
 		y_Axe.setText(Integer.toString(save_axeY / 16));
 		x_Boat.setText(Integer.toString(save_boatX / 16));
 		y_Boat.setText(Integer.toString(save_boatY / 16));
+		
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -71,6 +79,7 @@ public class MapViewer implements Initializable {
 				select = 0;
 			}
 		});
+	
 
 		canvas.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 
@@ -86,12 +95,13 @@ public class MapViewer implements Initializable {
 					}
 					axeX = (int) e.getX() / 16;
 					axeY = (int) e.getY() / 16;
-					x_Axe.setText(Integer.toString(axeX));
+				    x_Axe.setText(Integer.toString(axeX));
 					y_Axe.setText(Integer.toString(axeY));
 					first_axe = false;
 					gg.drawImage(itemss[1], axeX * 16, axeY * 16);
 					axe.setLayoutX((axeX) * 16 + 383);
 					axe.setLayoutY((axeY) * 16 + 64);
+					
 				} else {
 					draw(gg);
 					if (first_axe) {
@@ -112,7 +122,55 @@ public class MapViewer implements Initializable {
 				
 			}
 		});
+		
+		x_Axe.textProperty().addListener((observable, oldValue, newValue) -> {
+			GraphicsContext gg = canvas.getGraphicsContext2D();
+			try{
+				draw(gg);
+		   // System.out.println("TextField Text Changed (newValue: " + newValue + ")");
+		    
+		    axeX=Integer.parseInt(x_Axe.getText());
+			gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+			axe.setLayoutX((axeX) * 16 + 383);
+			axe.setLayoutY((axeY) * 16 + 64);
+			}
+			
+			catch (NullPointerException e){
+				
+			}
+			
+			catch(NumberFormatException e){
+				
+			};
+		});
+		
+		y_Axe.textProperty().addListener((observable, oldValue, newValue) -> {
+			GraphicsContext gg = canvas.getGraphicsContext2D();
+			try{
+				draw(gg);
+		//    System.out.println("TextField Text Changed (newValue: " + newValue + ")");
+		    axeY=Integer.parseInt(y_Axe.getText());
+		    gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+			axe.setLayoutX((axeX) * 16 + 383);
+			axe.setLayoutY((axeY) * 16 + 64);
+	
+			}
+			
+			catch (NullPointerException e){
+				
+			}
+			
+			catch(NumberFormatException e){
+				
+			};
+		});
+			
+		
 	}
+
+	
+	
+			
 
 		/*save.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 			@Override
@@ -281,6 +339,8 @@ public class MapViewer implements Initializable {
 	private Image[] itemss;
 	public Image image;
 	private int numTilesAcross;
+	
+	
 
 	///////////////////////////////////////////////////////
 	@FXML
