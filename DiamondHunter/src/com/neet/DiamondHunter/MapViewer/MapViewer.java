@@ -47,23 +47,23 @@ public class MapViewer implements Initializable{
 
 		// Draw Initial Map and Item Position
 		draw(g);
-		g.drawImage(itemss[0], save_boatY, save_boatX);
-		g.drawImage(itemss[1], save_axeY, save_axeX);
+		g.drawImage(itemss[0], save_boatX, save_boatY);
+		g.drawImage(itemss[1], save_axeX, save_axeY);
 		// Set TextField to default/initial value
 		
 
-		x_Axe.setText(Integer.toString(save_axeX / 16));
 		y_Axe.setText(Integer.toString(save_axeY / 16));
-		x_Boat.setText(Integer.toString(save_boatX / 16));
+		x_Axe.setText(Integer.toString(save_axeX / 16));
 		y_Boat.setText(Integer.toString(save_boatY / 16));
+		x_Boat.setText(Integer.toString(save_boatX / 16));
 		
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 		// Objects on GUI
 
-		boat.setLayoutX((save_boatY + 383));
-		boat.setLayoutY(save_boatX + 64);
+		boat.setLayoutX((save_boatX + 383));
+		boat.setLayoutY(save_boatY + 64);
 		boat.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 			public void handle(javafx.scene.input.MouseEvent event) {
 				select = 1;
@@ -71,8 +71,8 @@ public class MapViewer implements Initializable{
 		});
 		
 		
-		axe.setLayoutX((save_axeY + 383));
-		axe.setLayoutY(save_axeX + 64);
+		axe.setLayoutX((save_axeX + 383));
+		axe.setLayoutY(save_axeY + 64);
 		axe.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 		
 			public void handle(javafx.scene.input.MouseEvent event) {
@@ -88,7 +88,7 @@ public class MapViewer implements Initializable{
 				if (select == 0) {
 					draw(gg);
 					if (first_boat) {
-						gg.drawImage(itemss[0], save_boatY, save_boatX);
+						gg.drawImage(itemss[0], save_boatX, save_boatY);
 					}
 					if (!first_boat) {
 						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
@@ -105,7 +105,7 @@ public class MapViewer implements Initializable{
 				} else {
 					draw(gg);
 					if (first_axe) {
-						gg.drawImage(itemss[1], save_axeY, save_axeX);
+						gg.drawImage(itemss[1], save_axeX, save_axeY);
 					}
 					if (!first_axe) {
 						gg.drawImage(itemss[1], axeX * 16, axeY * 16);
@@ -116,6 +116,7 @@ public class MapViewer implements Initializable{
 					y_Boat.setText(Integer.toString(boatY));
 					first_boat = false;
 					gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+					
 					boat.setLayoutX((boatX) * 16 + 383);
 					boat.setLayoutY((boatY) * 16 + 64);
 				}
@@ -131,6 +132,8 @@ public class MapViewer implements Initializable{
 		    
 		    axeX=Integer.parseInt(x_Axe.getText());
 			gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+			gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+			//gg.drawImage(itemss[0], save_boatX, save_boatY);
 			axe.setLayoutX((axeX) * 16 + 383);
 			axe.setLayoutY((axeY) * 16 + 64);
 			}
@@ -151,6 +154,7 @@ public class MapViewer implements Initializable{
 		//    System.out.println("TextField Text Changed (newValue: " + newValue + ")");
 		    axeY=Integer.parseInt(y_Axe.getText());
 		    gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+		    gg.drawImage(itemss[0], boatX * 16, boatY * 16);
 			axe.setLayoutX((axeX) * 16 + 383);
 			axe.setLayoutY((axeY) * 16 + 64);
 	
@@ -164,6 +168,56 @@ public class MapViewer implements Initializable{
 				
 			};
 		});
+		
+		
+		x_Boat.textProperty().addListener((observable, oldValue, newValue) -> {
+			GraphicsContext gg = canvas.getGraphicsContext2D();
+			try{
+				draw(gg);
+		//    System.out.println("TextField Text Changed (newValue: " + newValue + ")");
+			boatX=Integer.parseInt(x_Boat.getText());
+		    gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+		    gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+			boat.setLayoutX((boatX) * 16 + 383);
+			boat.setLayoutY((boatY) * 16 + 64);
+	
+			}
+			
+			catch (NullPointerException e){
+				
+			}
+			
+			catch(NumberFormatException e){
+				
+			};
+		});
+		
+		y_Boat.textProperty().addListener((observable, oldValue, newValue) -> {
+			GraphicsContext gg = canvas.getGraphicsContext2D();
+			try{
+				draw(gg);
+		//    System.out.println("TextField Text Changed (newValue: " + newValue + ")");
+			boatY=Integer.parseInt(y_Boat.getText());
+		    gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+		    gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+			boat.setLayoutX((boatX) * 16 + 383);
+			boat.setLayoutY((boatY) * 16 + 64);
+	
+			}
+			
+			catch (NullPointerException e){
+				
+			}
+			
+			catch(NumberFormatException e){
+				
+			};
+		});
+		
+		
+		
+		
+		
 			
 		
 	}
@@ -325,8 +379,8 @@ public class MapViewer implements Initializable{
 	//////////////////////////////////////////////////
 
 	// Variables Declaration
-	private int axeX = 26, axeY = 37, boatX = 12, boatY = 4;
-	public static int save_axeX = 416, save_axeY = 592, save_boatX = 192, save_boatY = 64;
+	private int axeX = 37, axeY = 26, boatX = 4, boatY = 12;
+	public static int save_axeY = 416, save_axeX = 592, save_boatY = 192, save_boatX = 64;
 	int select = 0;
 	boolean first_boat = true, first_axe = true;
 
