@@ -4,6 +4,7 @@ package com.neet.DiamondHunter.GameState;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
@@ -23,8 +24,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.WindowEvent;
 import javafx.application.Application;
+import javafx.stage.Stage;
 
 public class MenuState extends GameState {
+	
 	
 	private BufferedImage bg;
 	private BufferedImage diamond;

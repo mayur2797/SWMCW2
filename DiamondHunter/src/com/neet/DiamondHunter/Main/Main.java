@@ -23,7 +23,7 @@ public class Main extends Application {
 			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent> (){
 				public void handle(WindowEvent t){
 					Platform.exit();
-					System.exit(0);
+					//System.exit(0);
 				}
 			});
 			primaryStage.setResizable(false);

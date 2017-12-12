@@ -15,8 +15,13 @@ import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -28,6 +33,8 @@ public class MapViewer implements Initializable {
 	/*
 	 * public MapViewer() { // TODO Auto-generated constructor stub }
 	 */
+	
+	public static int save_axeX, save_axeY, save_boatX, save_boatY = 0;
 
 	public void initialize(URL location, ResourceBundle resources) {
 		////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,7 +42,30 @@ public class MapViewer implements Initializable {
 		/*Alert saved = new Alert(Alert.AlertType.INFORMATION);
 		saved.setTitle("Axe and Boat");
 		saved.setHeaderText("Changes has been saved.");*/
+		
+		
 
+		try {
+			BufferedReader in = new BufferedReader(new FileReader(fileName));
+			save_axeX = Integer.parseInt(in.readLine());
+			save_axeY = Integer.parseInt(in.readLine());
+			save_boatX = Integer.parseInt(in.readLine());
+			save_boatY = Integer.parseInt(in.readLine());
+			in.close();
+		} catch (FileNotFoundException e2) {
+			save_axeY = 416;
+			save_axeX = 592;
+			save_boatY = 192;
+			save_boatX = 64;
+			e2.printStackTrace();
+		} catch (NumberFormatException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		GraphicsContext g = canvas.getGraphicsContext2D();
 		loadTiles("/Tilesets/testtileset.gif");
 		loadItems("/Sprites/items.gif");
@@ -124,11 +154,29 @@ public class MapViewer implements Initializable {
 			if (save_axeY == (axeY*16) && save_axeX == (axeX * 16) && save_boatY == (boatY * 16) && save_boatX == (boatX *16)) {
 				//code to alert that no changes made
 				System.out.println("No changes made");
-			} else {
+			} else if (map[axeY][axeX] == 20 || map[axeY][axeX] == 21 || map[boatY][boatX] == 20 || map[boatY][boatX] == 21 || map[boatY][boatX] == 22) {
+				//code to display no-entry sign
+			}
+			else {
+				
 				save_axeY = axeY * 16;
 				save_axeX = axeX * 16;
 				save_boatY = boatY * 16;
 				save_boatX = boatX * 16;
+				
+				try {
+					PrintWriter out = new PrintWriter(new FileWriter(fileName));
+					out.println(save_axeX);
+					out.println(save_axeY);
+					out.println(save_boatX);
+					out.println(save_boatY);
+					out.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
 				System.out.println("Changes saved");
 				//code to alert changes made
 			}
@@ -167,25 +215,6 @@ public class MapViewer implements Initializable {
 
 		}
 
-		/*private void checkInvalidPos(int axeX, int axeY, int boatX, int boatY) throws MyException {
-			// TODO Auto-generated method stub
-			if ((axeX * 16) == save_axeX && (axeY * 16) == save_axeY && (boatX * 16) == save_boatX
-					&& (boatY * 16) == save_boatY) {
-				throw new MyException("No changes are made. Please use the back button instead!");
-			}
-			if (map[axeY][axeX] == 20 || map[axeY][axeX] == 21) {
-				throw new MyException("Axe cannot be placed onto a tree");
-			}
-			if (map[axeY][axeX] == 22) {
-				throw new MyException("Axe cannot be placed into water");
-			}
-			if (map[boatY][boatX] == 20 || map[boatY][boatX] == 21) {
-				throw new MyException("Boat cannot be placed onto a tree");
-			}
-			if (map[boatY][boatX] == 22) {
-				throw new MyException("Boat cannot be placed into water");
-			}
-		}*/
 	});
 }
 	/*
@@ -282,8 +311,13 @@ public class MapViewer implements Initializable {
 	//////////////////////////////////////////////////
 
 	// Variables Declaration
+	
+	String fileName = "coordinates.txt";
+	
+	
+	
 	private int axeX = 26, axeY = 37, boatX = 12, boatY = 4;
-	public static int save_axeY = 416, save_axeX = 592, save_boatY = 192, save_boatX = 64;
+	
 	int select = 0;
 	boolean first_boat = true, first_axe = true;
 
