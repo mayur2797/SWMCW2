@@ -19,18 +19,32 @@ import javafx.stage.Stage;
 import javafx.scene.input.*;
 import javafx.scene.input.KeyCode;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+<<<<<<< HEAD
 import com.neet.DiamondHunter.Manager.Keys;
 
 public class MapViewer implements Initializable{
+=======
+//import com.neet.DiamondHunter.TileMapEditor.Alerts;
+//import com.neet.DiamondHunter.TileMapEditor.MyException;
+
+public class MapViewer implements Initializable {
+>>>>>>> 32ecf4adb4461b6e3f92764e0ec78b5b957a9d02
 
 	/*
 	 * public MapViewer() { // TODO Auto-generated constructor stub }
 	 */
+	
+	public static int save_axeX, save_axeY, save_boatX, save_boatY = 0;
 
 	public void initialize(URL location, ResourceBundle resources) {
 		////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -39,7 +53,32 @@ public class MapViewer implements Initializable{
 		saved.setTitle("Axe and Boat");
 		saved.setHeaderText("Changes has been saved.");*/
 		
+<<<<<<< HEAD
+=======
+		
+>>>>>>> 32ecf4adb4461b6e3f92764e0ec78b5b957a9d02
 
+		try {
+			BufferedReader in = new BufferedReader(new FileReader(fileName));
+			save_axeX = Integer.parseInt(in.readLine());
+			save_axeY = Integer.parseInt(in.readLine());
+			save_boatX = Integer.parseInt(in.readLine());
+			save_boatY = Integer.parseInt(in.readLine());
+			in.close();
+		} catch (FileNotFoundException e2) {
+			save_axeY = 416;
+			save_axeX = 592;
+			save_boatY = 192;
+			save_boatX = 64;
+			e2.printStackTrace();
+		} catch (NumberFormatException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		GraphicsContext g = canvas.getGraphicsContext2D();
 		loadTiles("/Tilesets/testtileset.gif");
 		loadItems("/Sprites/items.gif");
@@ -123,6 +162,7 @@ public class MapViewer implements Initializable{
 				
 			}
 		});
+<<<<<<< HEAD
 		
 		x_Axe.textProperty().addListener((observable, oldValue, newValue) -> {
 			GraphicsContext gg = canvas.getGraphicsContext2D();
@@ -230,65 +270,84 @@ public class MapViewer implements Initializable{
 			@Override
 			public void handle(javafx.scene.input.MouseEvent event) {
 				 if(first_boat==false){
+=======
+	
+
+	savebutton.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
+		public void handle(javafx.scene.input.MouseEvent event) {
+			
+			//Insert code for check valid position here
+			if (save_axeY == (axeY*16) && save_axeX == (axeX * 16) && save_boatY == (boatY * 16) && save_boatX == (boatX *16)) {
+				//code to alert that no changes made
+				System.out.println("No changes made");
+			} else if (map[axeY][axeX] == 20 || map[axeY][axeX] == 21 || map[boatY][boatX] == 20 || map[boatY][boatX] == 21 || map[boatY][boatX] == 22) {
+				//code to display no-entry sign
+			}
+			else {
+				
+				save_axeY = axeY * 16;
+				save_axeX = axeX * 16;
+				save_boatY = boatY * 16;
+				save_boatX = boatX * 16;
+				
+>>>>>>> 32ecf4adb4461b6e3f92764e0ec78b5b957a9d02
 				try {
-					if (first_axe == true && first_boat == true) {
-						checkInvalidPos(axeY, axeX, boatY, boatX);
-					}
-					if (first_axe == false && first_boat == false) {
-						checkInvalidPos(axeX, axeY, boatX, boatY);
-					}
-					if (first_axe == true && first_boat == false) {
-						checkInvalidPos(axeY, axeX, boatX, boatY);
-					}
-					if (first_axe == false && first_boat == true) {
-						checkInvalidPos(axeX, axeY, boatY, boatX);
-					}
-
-					if (first_axe == false) {
-						save_axeX = axeY * 16;
-						save_axeY = axeX * 16;
-					}
-					if (first_boat == false) {
-						save_boatX = boatY * 16;
-						save_boatY = boatX * 16;
-					}
-					saved.setContentText("Position of Axe (x,y)  : " + save_axeY / 16 + " " + save_axeX / 16
-							+ "\nPosition of Boat (x,y) : " + save_boatY / 16 + " " + save_boatX / 16
-							+ "\n\n * please note that there is possibility that you might not be able to complete the game due to improper positioning.");
-					saved.showAndWait();
-				} catch (MyException e) {
-					Alerts.display("Alert", e.message);
+					PrintWriter out = new PrintWriter(new FileWriter(fileName));
+					out.println(save_axeX);
+					out.println(save_axeY);
+					out.println(save_boatX);
+					out.println(save_boatY);
+					out.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-
+				
+				
+				System.out.println("Changes saved");
+				//code to alert changes made
 			}
+			
+			
+			// if(first_boat==false){
+			/*try {
+				if (first_axe == true && first_boat == true) {
+					checkInvalidPos(axeY, axeX, boatY, boatX);
+				}
+				if (first_axe == false && first_boat == false) {
+					checkInvalidPos(axeX, axeY, boatX, boatY);
+				}
+				if (first_axe == true && first_boat == false) {
+					checkInvalidPos(axeY, axeX, boatX, boatY);
+				}
+				if (first_axe == false && first_boat == true) {
+					checkInvalidPos(axeX, axeY, boatY, boatX);
+				}
 
-			private void checkInvalidPos(int axeX, int axeY, int boatX, int boatY) throws MyException {
-				// TODO Auto-generated method stub
-				if ((axeX * 16) == save_axeX && (axeY * 16) == save_axeY && (boatX * 16) == save_boatX
-						&& (boatY * 16) == save_boatY) {
-					throw new MyException("No changes are made. Please use the back button instead!");
+				if (first_axe == false) {
+					save_axeX = axeY * 16;
+					save_axeY = axeX * 16;
 				}
-				if (map[axeY][axeX] == 20 || map[axeY][axeX] == 21) {
-					throw new MyException("Axe cannot be placed onto a tree");
+				if (first_boat == false) {
+					save_boatX = boatY * 16;
+					save_boatY = boatX * 16;
 				}
-				if (map[axeY][axeX] == 22) {
-					throw new MyException("Axe cannot be placed into water");
-				}
-				if (map[boatY][boatX] == 20 || map[boatY][boatX] == 21) {
-					throw new MyException("Boat cannot be placed onto a tree");
-				}
-				if (map[boatY][boatX] == 22) {
-					throw new MyException("Boat cannot be placed into water");
-				}
-			}
-		});*/
+				saved.setContentText("Position of Axe (x,y)  : " + save_axeY / 16 + " " + save_axeX / 16
+						+ "\nPosition of Boat (x,y) : " + save_boatY / 16 + " " + save_boatX / 16
+						+ "\n\n * please note that there is possibility that you might not be able to complete the game due to improper positioning.");
+				saved.showAndWait();
+			} catch (MyException e) {
+				Alerts.display("Alert", e.message);
+			}*/
 
-	/*@FXML
-	public void back() throws Exception {
-		Scene scene = back.getScene();
-		Stage currentscene = (Stage) scene.getWindow();
-		currentscene.hide();
-	}*/
+		}
+
+	});
+}
+	/*
+	 * @FXML public void back() throws Exception { Scene scene = back.getScene();
+	 * Stage currentscene = (Stage) scene.getWindow(); currentscene.hide(); }
+	 */
 
 	//////////////////////////////////////////////////
 	// Methods to extract images from resources
@@ -379,8 +438,18 @@ public class MapViewer implements Initializable{
 	//////////////////////////////////////////////////
 
 	// Variables Declaration
+<<<<<<< HEAD
 	private int axeX = 37, axeY = 26, boatX = 4, boatY = 12;
 	public static int save_axeY = 416, save_axeX = 592, save_boatY = 192, save_boatX = 64;
+=======
+	
+	String fileName = "coordinates.txt";
+	
+	
+	
+	private int axeX = 26, axeY = 37, boatX = 12, boatY = 4;
+	
+>>>>>>> 32ecf4adb4461b6e3f92764e0ec78b5b957a9d02
 	int select = 0;
 	boolean first_boat = true, first_axe = true;
 
@@ -408,10 +477,9 @@ public class MapViewer implements Initializable{
 
 	@FXML
 	private Button backbutton;
-	
+
 	@FXML
 	private Button resetbutton;
-
 
 	@FXML
 	private TextField y_Axe;

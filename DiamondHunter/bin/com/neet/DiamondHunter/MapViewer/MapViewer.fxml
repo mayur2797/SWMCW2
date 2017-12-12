@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="764.0" maxWidth="1086.0" minHeight="764.0" minWidth="1086.0" prefHeight="764.0" prefWidth="1086.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neet.DiamondHunter.MapViewer.MapViewer">
+<AnchorPane maxHeight="764.0" maxWidth="1142.0" minHeight="750.0" minWidth="1075.0" prefHeight="752.0" prefWidth="1075.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neet.DiamondHunter.MapViewer.MapViewer">
    <children>
 
       <ImageView fitHeight="764.0" fitWidth="1086.0">
@@ -33,10 +33,31 @@
       <TextField fx:id="y_Axe" layoutX="260.0" layoutY="306.0" prefHeight="24.0" prefWidth="41.0" />
       <TextField layoutX="181.0" layoutY="369.0" prefHeight="24.0" prefWidth="41.0" fx:id="x_Boat" />
       <TextField fx:id="y_Boat" layoutX="260.0" layoutY="369.0" prefHeight="24.0" prefWidth="41.0" />
-      <Button fx:id="savebutton" layoutX="150.0" layoutY="484.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" />
-      <Button fx:id="resetbutton" layoutX="150.0" layoutY="543.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" />
+      <Button fx:id="savebutton" layoutX="150.0" layoutY="484.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0">
+         <graphic>
+            <ImageView fitHeight="38.0" fitWidth="104.0">
+               <image>
+                  <Image url="@../../../../../Resources/MapViewer/savebutton.jpg" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="resetbutton" layoutX="150.0" layoutY="543.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0">
+         <graphic>
+            <ImageView fitHeight="38.0" fitWidth="104.0">
+               <image>
+                  <Image url="@../../../../../Resources/MapViewer/resetbutton.jpg" />
+               </image>
+            </ImageView>
+         </graphic></Button>
 
-      <Button fx:id="backbutton" layoutX="150.0" layoutY="605.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" />
+      <Button fx:id="backbutton" layoutX="150.0" layoutY="605.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0">
+         <graphic>
+            <ImageView fitHeight="38.0" fitWidth="104.0">
+               <image>
+                  <Image url="@../../../../../Resources/MapViewer/backbutton.jpg" />
+               </image>
+            </ImageView>
+         </graphic></Button>
 
 
    </children>
