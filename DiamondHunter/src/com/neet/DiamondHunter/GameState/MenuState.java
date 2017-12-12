@@ -28,7 +28,8 @@ public class MenuState extends GameState {
 	
 	private BufferedImage bg;
 	private BufferedImage diamond;
-	
+	private BufferedImage snow;
+		//private BufferedImage error;
 	private int currentOption = 0;
 	private String[] options = {
 		"START",
@@ -43,6 +44,8 @@ public class MenuState extends GameState {
 	public void init() {
 		bg = Content.MENUBG[0][0];
 		diamond = Content.DIAMOND[0][0];
+		snow = Content.SNOW[0][0];
+	//error = Content.error[0][0];
 		JukeBox.load("/SFX/collect.wav", "collect");
 		JukeBox.load("/SFX/menuoption.wav", "menuoption");
 	}
@@ -54,14 +57,21 @@ public class MenuState extends GameState {
 	public void draw(Graphics2D g) {
 		
 		g.drawImage(bg, 0, 0, null);
+		/*g.drawImage(diamond, 0, 20, null);*/
+		//g.drawImage(error, 113, 20, null);
+		//g.drawImage(tree, 1, 76, null);
+		//g.drawImage(tree, 86, 76, null);
+		Content.drawString(g, options[0], 44, 80);
+		Content.drawString(g, options[1], 34, 100);
+		Content.drawString(g, options[2], 48, 120);
 		
-		Content.drawString(g, options[0], 44, 70);
-		Content.drawString(g, options[1], 36, 90);
-		Content.drawString(g, options[2], 48, 110);
-		
-		if(currentOption == 0) g.drawImage(diamond, 28, 66, null);
-		else if(currentOption == 1) g.drawImage(diamond, 20, 86, null);
-		else if(currentOption == 2) g.drawImage(diamond, 30, 106, null);	
+		/*if(currentOption == 0) g.drawImage(diamond, 28, 46, null);
+		else if(currentOption == 1) g.drawImage(diamond, 20, 66, null);
+		else if(currentOption == 2) g.drawImage(diamond, 32, 86, null);	*/
+
+if(currentOption == 0) g.drawImage(snow, 22, 74, null);
+		else if(currentOption == 1) g.drawImage(snow, 12, 92, null);
+		else if(currentOption == 2) g.drawImage(snow, 26, 114, null);	
 	}
 	
 	public void handleInput() {
