@@ -45,26 +45,7 @@ public class MapViewer implements Initializable {
 		
 		
 
-		try {
-			BufferedReader in = new BufferedReader(new FileReader(fileName));
-			save_axeX = Integer.parseInt(in.readLine());
-			save_axeY = Integer.parseInt(in.readLine());
-			save_boatX = Integer.parseInt(in.readLine());
-			save_boatY = Integer.parseInt(in.readLine());
-			in.close();
-		} catch (FileNotFoundException e2) {
-			save_axeY = 416;
-			save_axeX = 592;
-			save_boatY = 192;
-			save_boatX = 64;
-			e2.printStackTrace();
-		} catch (NumberFormatException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		readfromfile();
 		
 		GraphicsContext g = canvas.getGraphicsContext2D();
 		loadTiles("/Tilesets/testtileset.gif");
@@ -164,17 +145,7 @@ public class MapViewer implements Initializable {
 				save_boatY = boatY * 16;
 				save_boatX = boatX * 16;
 				
-				try {
-					PrintWriter out = new PrintWriter(new FileWriter(fileName));
-					out.println(save_axeX);
-					out.println(save_axeY);
-					out.println(save_boatX);
-					out.println(save_boatY);
-					out.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				savetofile();
 				
 				
 				System.out.println("Changes saved");
@@ -306,6 +277,43 @@ public class MapViewer implements Initializable {
 
 		}
 
+	}
+	
+	public void savetofile() {
+		try {
+			PrintWriter out = new PrintWriter(new FileWriter(fileName));
+			out.println(save_axeX);
+			out.println(save_axeY);
+			out.println(save_boatX);
+			out.println(save_boatY);
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void readfromfile() {
+		try {
+			BufferedReader in = new BufferedReader(new FileReader(fileName));
+			save_axeX = Integer.parseInt(in.readLine());
+			save_axeY = Integer.parseInt(in.readLine());
+			save_boatX = Integer.parseInt(in.readLine());
+			save_boatY = Integer.parseInt(in.readLine());
+			in.close();
+		} catch (FileNotFoundException e2) {
+			save_axeY = 416;
+			save_axeX = 592;
+			save_boatY = 192;
+			save_boatX = 64;
+			e2.printStackTrace();
+		} catch (NumberFormatException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 
 	//////////////////////////////////////////////////
