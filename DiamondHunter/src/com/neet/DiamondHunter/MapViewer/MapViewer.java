@@ -48,7 +48,7 @@ public class MapViewer implements Initializable{
 
 		/*Alert saved = new Alert(Alert.AlertType.INFORMATION);
 		saved.setTitle("Axe and Boat");
-		saved.setHeaderText("Changes has been saved.");*/
+		saved.setHeaderText("Changes have been saved.");*/
 
 
 		readfromfile();
