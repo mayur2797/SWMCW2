@@ -25,8 +25,8 @@ public class Main extends Application {
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("../MapViewer/MapViewer.fxml"));
 			Scene scene = new Scene(root);
 			windowmap.setScene(scene);
-			windowmap.hide();
-			
+			windowmap.show();
+			/*
 			//game
 			window = new JFrame("Diamond Hunter");
 
@@ -38,7 +38,7 @@ public class Main extends Application {
 			window.setLocationRelativeTo(null);
 			window.setVisible(true);
 			window.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-			
+			*/
 			
 
 			
