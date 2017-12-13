@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 
-public class OKButtonController {
+public class SaveDialogController {
 	@FXML
 	private Button okbutton;
 
