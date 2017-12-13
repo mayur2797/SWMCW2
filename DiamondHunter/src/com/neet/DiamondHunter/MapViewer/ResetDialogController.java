@@ -26,5 +26,6 @@ public class ResetDialogController {
 	 	   Stage currentscene = (Stage)scene.getWindow();
 	 	   currentscene.hide();	
 	 	   //add code to reset positions here
+	 	   
 	}  
 }
