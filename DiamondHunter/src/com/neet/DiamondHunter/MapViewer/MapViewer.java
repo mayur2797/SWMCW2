@@ -5,7 +5,9 @@ import java.awt.event.*;
 import java.awt.event.KeyEvent;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -33,7 +35,8 @@ import com.neet.DiamondHunter.Manager.Keys;
 
 public class MapViewer implements Initializable{
 
-
+	Stage primaryStage= new Stage();
+	
 	/*
 	 * public MapViewer() { // TODO Auto-generated constructor stub }
 	 */
@@ -237,6 +240,19 @@ public class MapViewer implements Initializable{
 	savebutton.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 		public void handle(javafx.scene.input.MouseEvent event) {
 			
+			Parent root;
+			try {
+				root = FXMLLoader.load(getClass().getResource("savedialog.fxml"));
+				 	primaryStage.setTitle("Saved changes");        
+			        Scene scene = new Scene(root);
+			        primaryStage.setScene(scene);
+			        primaryStage.setResizable(false);
+			        primaryStage.show();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			//Insert code for check valid position here
 			if (save_axeY == (axeY*16) && save_axeX == (axeX * 16) && save_boatY == (boatY * 16) && save_boatX == (boatX *16)) {
 				//code to alert that no changes made
@@ -253,9 +269,8 @@ public class MapViewer implements Initializable{
 				
 
 				savetofile();
-
-				
-				
+		       
+		        
 				System.out.println("Changes saved");
 				//code to alert changes made
 			}
