@@ -240,18 +240,6 @@ public class MapViewer implements Initializable{
 	savebutton.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 		public void handle(javafx.scene.input.MouseEvent event) {
 			
-			Parent root;
-			try {
-				root = FXMLLoader.load(getClass().getResource("savedialog.fxml"));
-				 	primaryStage.setTitle("Saved changes");        
-			        Scene scene = new Scene(root);
-			        primaryStage.setScene(scene);
-			        primaryStage.setResizable(false);
-			        primaryStage.show();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			
 			//Insert code for check valid position here
 			if (save_axeY == (axeY*16) && save_axeX == (axeX * 16) && save_boatY == (boatY * 16) && save_boatX == (boatX *16)) {
@@ -261,6 +249,24 @@ public class MapViewer implements Initializable{
 				//code to display no-entry sign
 			}
 			else {
+				
+				Parent root;
+				try {
+					root = FXMLLoader.load(getClass().getResource("savedialog.fxml"));
+					 	primaryStage.setTitle("Saved changes");        
+				        Scene scene = new Scene(root);
+				        primaryStage.setScene(scene);
+				        primaryStage.setResizable(false);
+				        primaryStage.show();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				//close editor when save is clicked
+				 Scene scene = savebutton.getScene();
+			     Stage currentscene = (Stage)scene.getWindow();
+			     currentscene.hide();
 				
 				save_axeY = axeY * 16;
 				save_axeX = axeX * 16;
