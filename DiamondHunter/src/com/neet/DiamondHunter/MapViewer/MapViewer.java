@@ -39,6 +39,9 @@ public class MapViewer implements Initializable{
 	 */
 	
 	public static int save_axeX, save_axeY, save_boatX, save_boatY = 0;
+	
+	//private int axeX = 37, axeY = 26, boatX = 4, boatY = 12;
+	private int axeX, axeY, boatX, boatY = 0;
 
 	public void initialize(URL location, ResourceBundle resources) {
 		////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -49,6 +52,11 @@ public class MapViewer implements Initializable{
 
 
 		readfromfile();
+		
+		axeX = save_axeX / 16;
+		axeY = save_axeY / 16;
+		boatX = save_boatX / 16;
+		boatY = save_boatY / 16;
 		
 		GraphicsContext g = canvas.getGraphicsContext2D();
 		loadTiles("/Tilesets/testtileset.gif");
@@ -420,7 +428,6 @@ public class MapViewer implements Initializable{
 
 	// Variables Declaration
 
-	private int axeX = 37, axeY = 26, boatX = 4, boatY = 12;
 	
 	String fileName = "coordinates.txt";
 
