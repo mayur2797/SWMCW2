@@ -1,8 +1,11 @@
 package com.neet.DiamondHunter.MapViewer;
 
 import javafx.event.EventHandler;
+
 import java.awt.event.*;
 import java.awt.event.KeyEvent;
+import javafx.scene.image.ImageView;
+
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,7 +43,6 @@ public class MapViewer implements Initializable{
 	
 	public static int save_axeX, save_axeY, save_boatX, save_boatY = 0;
 	
-	//private int axeX = 37, axeY = 26, boatX = 4, boatY = 12;
 	private int axeX, axeY, boatX, boatY = 0;
 
 	public void initialize(URL location, ResourceBundle resources) {
@@ -62,6 +64,7 @@ public class MapViewer implements Initializable{
 		loadTiles("/Tilesets/testtileset.gif");
 		loadItems("/Sprites/items.gif");
 		loadMap("/Maps/testmap.map");
+		loadError("/Sprites/error.png");
 
 		// Draw Initial Map and Item Position
 		draw(g);
@@ -188,25 +191,44 @@ public class MapViewer implements Initializable{
 			};
 		});
 		
-		
+		// listening to the change in value of the text field of the x value of the boat
 		x_Boat.textProperty().addListener((observable, oldValue, newValue) -> {
 			GraphicsContext gg = canvas.getGraphicsContext2D();
+			draw(gg);
 			try{
-				draw(gg);
-		//    System.out.println("TextField Text Changed (newValue: " + newValue + ")");
+			
 			boatX=Integer.parseInt(x_Boat.getText());
-		    gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-		    gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-			boat.setLayoutX((boatX) * 16 + 383);
-			boat.setLayoutY((boatY) * 16 + 64);
-	
+		//	System.out.println(x_Boat.getText());
+			if (boatX >= 40){
+				 gg.drawImage(itemss[0], 39 * 16, boatY * 16);	
+				 gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+				 boat.setLayoutX((39) * 16 + 383);
+				 boat.setLayoutY((boatY) * 16 + 64);
+				
 			}
+			else 
+			{
+				
+				 gg.drawImage(itemss[0], boatX * 16, boatY * 16);// draw the boat
+		   	     gg.drawImage(itemss[1], axeX * 16, axeY * 16);// draw the axe
+			 //   gg.drawImage(itemss[2], (axeX) * 16, (axeY) * 16); // draw the error 
+					boat.setLayoutX((boatX) * 16 + 383);
+					boat.setLayoutY((boatY) * 16 + 64);	
+				
+				
+			}
+					
+		}
 			
 			catch (NullPointerException e){
 				
 			}
 			
 			catch(NumberFormatException e){
+				 gg.drawImage(itemss[0], 0* 16, boatY * 16);// draw the boat
+				 gg.drawImage(itemss[1], axeX * 16, axeY * 16);// draw the axe
+				boat.setLayoutX((0) * 16 + 383);
+				boat.setLayoutY((boatY) * 16 + 64);
 				
 			};
 		});
@@ -225,6 +247,7 @@ public class MapViewer implements Initializable{
 			}
 			
 			catch (NullPointerException e){
+				e.printStackTrace();
 				
 			}
 			
@@ -307,11 +330,9 @@ public class MapViewer implements Initializable{
 	////////////////////////////////////////////////// to map.map
 	public void loadItems(String s) {
 		Image setTile = new Image(s);
-		itemss = new Image[2];
+		itemss = new Image[3];
 		for (int col = 0; col < 2; col++) {
-			itemss[col] = new WritableImage(setTile.getPixelReader(), col * tileSize, 16,
-
-					tileSize, tileSize);
+			itemss[col] = new WritableImage(setTile.getPixelReader(), col * tileSize, 16, tileSize, tileSize);
 		}
 	}
 
@@ -333,6 +354,24 @@ public class MapViewer implements Initializable{
 			e.printStackTrace();
 		}
 
+	}
+	
+	public void loadError(String s ){
+		
+		try{
+			
+			Image image3 = new Image(s);
+			itemss[2]=image3;
+			//tiles[0][1]=image3; 
+
+			//image3.getPixelReader();
+			
+		}
+		
+		catch (Exception e){
+			
+			e.printStackTrace();
+		}
 	}
 
 	public void loadMap(String s) {
