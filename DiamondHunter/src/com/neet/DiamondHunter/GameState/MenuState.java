@@ -97,8 +97,11 @@ if(currentOption == 0) g.drawImage(snow, 22, 74, null);
 			gsm.setState(GameStateManager.PLAY);
 		}
 		if(currentOption == 1) {
-			String[] args = null;
-			Application.launch(Main.class, args);
+//			String[] args = null;
+//			Application.launch(Main.class, args);
+			//Main.main(null);
+			Main main = new Main();
+			main.windowmap.show();
 		}
 		if(currentOption == 2) {
 			System.exit(0);
