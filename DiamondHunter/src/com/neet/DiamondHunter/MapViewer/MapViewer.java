@@ -236,7 +236,7 @@ public class MapViewer implements Initializable{
 			};
 		});
 
-
+//clicking on save button
 	savebutton.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 		public void handle(javafx.scene.input.MouseEvent event) {
 			
@@ -282,6 +282,7 @@ public class MapViewer implements Initializable{
 			}
 			
 			
+			
 			// if(first_boat==false){
 			/*try {
 				if (first_axe == true && first_boat == true) {
@@ -314,6 +315,9 @@ public class MapViewer implements Initializable{
 			}*/
 
 		}
+		
+
+		     
 
 	});
 }
@@ -444,6 +448,23 @@ public class MapViewer implements Initializable{
 			e1.printStackTrace();
 		}
 	}
+	
+	//clicking on reset button
+			@FXML
+			public void resetbutton() {
+				Parent root;
+				try {
+					root = FXMLLoader.load(getClass().getResource("resetdialog.fxml"));
+					 	primaryStage.setTitle("Reset Positions");        
+				        Scene scene = new Scene(root);
+				        primaryStage.setScene(scene);
+				        primaryStage.setResizable(false);
+				        primaryStage.show();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 
 	//////////////////////////////////////////////////
 

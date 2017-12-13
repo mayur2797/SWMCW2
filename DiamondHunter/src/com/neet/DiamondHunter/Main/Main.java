@@ -40,8 +40,6 @@ public class Main extends Application {
 			window.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 			*/
 			
-
-			
 			windowmap.setOnCloseRequest(new EventHandler<WindowEvent> (){
 				public void handle(WindowEvent t){
 					//Platform.exit();
