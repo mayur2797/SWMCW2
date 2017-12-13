@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+/HUD/
+/Logo/
+/MapViewer/
+/Maps/
+/Music/
+/SFX/
+/Sprites/
+/com/
+/desktop.ini
+/Tilesets/
+=======
 /com/
 <<<<<<< HEAD
 =======
@@ -9,3 +21,4 @@
 >>>>>>> 5da0d624365550e8c847c0664133d66d5a17b40a
 /MapViewer/
 >>>>>>> 5ebf25735dd61fa3ad500b5aef10df5b80a661fa
+>>>>>>> d2d02823ac39e7384fada95085257e813e3c304b
