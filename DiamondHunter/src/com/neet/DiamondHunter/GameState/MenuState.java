@@ -100,6 +100,8 @@ if(currentOption == 0) g.drawImage(snow, 22, 74, null);
 //			String[] args = null;
 //			Application.launch(Main.class, args);
 			//Main.main(null);
+			Main main = new Main();
+			main.windowmap.show();
 		}
 		if(currentOption == 2) {
 			System.exit(0);
