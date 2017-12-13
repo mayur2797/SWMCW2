@@ -150,14 +150,24 @@ public class MapViewer implements Initializable{
 			GraphicsContext gg = canvas.getGraphicsContext2D();
 			try{
 				draw(gg);
-		   // System.out.println("TextField Text Changed (newValue: " + newValue + ")");
 		    
 		    axeX=Integer.parseInt(x_Axe.getText());
-			gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-			gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-			//gg.drawImage(itemss[0], save_boatX, save_boatY);
-			axe.setLayoutX((axeX) * 16 + 383);
-			axe.setLayoutY((axeY) * 16 + 64);
+		    if(axeX >=40)
+		    {
+		    	gg.drawImage(itemss[1], 39 * 16, axeY * 16);
+		    	gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+		    	//gg.drawImage(itemss[0], save_boatX, save_boatY);
+		    	axe.setLayoutX((39) * 16 + 383);
+		    	axe.setLayoutY((axeY) * 16 + 64);
+		    }
+		    else{
+		    	gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+		    	gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+		    	//gg.drawImage(itemss[0], save_boatX, save_boatY);
+		    	axe.setLayoutX((axeX) * 16 + 383);
+		    	axe.setLayoutY((axeY) * 16 + 64);
+
+		    }
 			}
 			
 			catch (NullPointerException e){
@@ -165,6 +175,12 @@ public class MapViewer implements Initializable{
 			}
 			
 			catch(NumberFormatException e){
+				gg.drawImage(itemss[1], 0 * 16, axeY * 16);
+		    	gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+		    	//gg.drawImage(itemss[0], save_boatX, save_boatY);
+		    	axe.setLayoutX((0) * 16 + 383);
+		    	axe.setLayoutY((axeY) * 16 + 64);
+				
 				
 			};
 		});
@@ -173,12 +189,23 @@ public class MapViewer implements Initializable{
 			GraphicsContext gg = canvas.getGraphicsContext2D();
 			try{
 				draw(gg);
-		//    System.out.println("TextField Text Changed (newValue: " + newValue + ")");
+		
 		    axeY=Integer.parseInt(y_Axe.getText());
-		    gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-		    gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-			axe.setLayoutX((axeX) * 16 + 383);
-			axe.setLayoutY((axeY) * 16 + 64);
+		    if (axeY >=40){
+		    	gg.drawImage(itemss[1], axeX * 16, 39 * 16);
+		    	gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+		    	axe.setLayoutX((axeX) * 16 + 383);
+		    	axe.setLayoutY((39) * 16 + 64);
+		    		}
+		    else{
+		    	
+		    	gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+		    	gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+		    	axe.setLayoutX((axeX) * 16 + 383);
+		    	axe.setLayoutY((axeY) * 16 + 64);
+		    	
+		    	
+		    }
 	
 			}
 			
@@ -187,6 +214,11 @@ public class MapViewer implements Initializable{
 			}
 			
 			catch(NumberFormatException e){
+				
+				gg.drawImage(itemss[1], axeX * 16, 0 * 16);
+		    	gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+		    	axe.setLayoutX((axeX) * 16 + 383);
+		    	axe.setLayoutY((0) * 16 + 64);
 				
 			};
 		});
@@ -198,9 +230,17 @@ public class MapViewer implements Initializable{
 			try{
 			
 			boatX=Integer.parseInt(x_Boat.getText());
-		//	System.out.println(x_Boat.getText());
+			if (check_tiles(boatY,boatX)){
+				gg.drawImage(itemss[2], (boatX) * 16, (boatY) * 16);
+				gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+
+			}
+			
+			else 
+			{
+		
 			if (boatX >= 40){
-				 gg.drawImage(itemss[0], 39 * 16, boatY * 16);	
+				 gg.drawImage(itemss[2], 39 * 16, boatY * 16);	
 				 gg.drawImage(itemss[1], axeX * 16, axeY * 16);
 				 boat.setLayoutX((39) * 16 + 383);
 				 boat.setLayoutY((boatY) * 16 + 64);
@@ -211,12 +251,12 @@ public class MapViewer implements Initializable{
 				
 				 gg.drawImage(itemss[0], boatX * 16, boatY * 16);// draw the boat
 		   	     gg.drawImage(itemss[1], axeX * 16, axeY * 16);// draw the axe
-			 //   gg.drawImage(itemss[2], (axeX) * 16, (axeY) * 16); // draw the error 
 					boat.setLayoutX((boatX) * 16 + 383);
 					boat.setLayoutY((boatY) * 16 + 64);	
 				
 				
-			}
+				}
+			}	
 					
 		}
 			
@@ -225,7 +265,7 @@ public class MapViewer implements Initializable{
 			}
 			
 			catch(NumberFormatException e){
-				 gg.drawImage(itemss[0], 0* 16, boatY * 16);// draw the boat
+				 gg.drawImage(itemss[2], 0* 16, boatY * 16);// draw the boat
 				 gg.drawImage(itemss[1], axeX * 16, axeY * 16);// draw the axe
 				boat.setLayoutX((0) * 16 + 383);
 				boat.setLayoutY((boatY) * 16 + 64);
@@ -237,22 +277,47 @@ public class MapViewer implements Initializable{
 			GraphicsContext gg = canvas.getGraphicsContext2D();
 			try{
 				draw(gg);
-		//    System.out.println("TextField Text Changed (newValue: " + newValue + ")");
+	
 			boatY=Integer.parseInt(y_Boat.getText());
-		    gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+			if (check_tiles(boatY,boatX)){
+				gg.drawImage(itemss[2], (boatX) * 16, (boatY) * 16);
+				gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+
+			}
+			else
+			
+			{
+			
+				if (boatY >= 40)
+			{
+		    gg.drawImage(itemss[2], boatX * 16, 39 * 16);
 		    gg.drawImage(itemss[1], axeX * 16, axeY * 16);
 			boat.setLayoutX((boatX) * 16 + 383);
-			boat.setLayoutY((boatY) * 16 + 64);
-	
+			boat.setLayoutY((39) * 16 + 64);
 			}
 			
+			else {
+				
+				 gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+				 gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+		       	boat.setLayoutX((boatX) * 16 + 383);
+				boat.setLayoutY((boatY) * 16 + 64);
+				
+				
+							}
+					}
+			
+			}
+					
 			catch (NullPointerException e){
 				e.printStackTrace();
 				
-			}
-			
-			catch(NumberFormatException e){
-				
+			}		
+			catch(NumberFormatException e){	
+				 gg.drawImage(itemss[2], boatX * 16, 0 * 16);
+				 gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+		       	boat.setLayoutX((boatX) * 16 + 383);
+				boat.setLayoutY((0) * 16 + 64);
 			};
 		});
 
@@ -335,6 +400,26 @@ public class MapViewer implements Initializable{
 			itemss[col] = new WritableImage(setTile.getPixelReader(), col * tileSize, 16, tileSize, tileSize);
 		}
 	}
+	public boolean check_tiles( int n, int m){
+		try {
+			
+		if ((map[n][m]==20) || map[n][m]==22 || map[n][m]==21)
+		{
+			
+			return true;
+		}
+		else {
+			
+			return false;
+		}
+		}
+		catch (IndexOutOfBoundsException e){
+	
+			
+		}
+		
+		return false;
+	}
 
 	public void loadTiles(String s) {
 
@@ -362,10 +447,6 @@ public class MapViewer implements Initializable{
 			
 			Image image3 = new Image(s);
 			itemss[2]=image3;
-			//tiles[0][1]=image3; 
-
-			//image3.getPixelReader();
-			
 		}
 		
 		catch (Exception e){
