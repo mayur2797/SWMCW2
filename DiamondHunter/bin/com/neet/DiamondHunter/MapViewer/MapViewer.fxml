@@ -41,7 +41,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="resetbutton" layoutX="150.0" layoutY="543.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0">
+      <Button fx:id="resetbutton" layoutX="150.0" layoutY="543.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#resetbutton" prefHeight="37.0" prefWidth="104.0">
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="104.0">
                <image>
@@ -50,7 +50,7 @@
             </ImageView>
          </graphic></Button>
 
-      <Button fx:id="backbutton" layoutX="150.0" layoutY="605.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0">
+      <Button fx:id="backbutton" layoutX="150.0" layoutY="605.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backbutton" prefHeight="37.0" prefWidth="104.0">
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="104.0">
                <image>

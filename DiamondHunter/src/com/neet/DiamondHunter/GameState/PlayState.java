@@ -7,6 +7,10 @@ package com.neet.DiamondHunter.GameState;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.neet.DiamondHunter.Entity.Diamond;
@@ -22,6 +26,9 @@ import com.neet.DiamondHunter.Manager.Keys;
 import com.neet.DiamondHunter.TileMap.TileMap;
 
 public class PlayState extends GameState {
+	
+	public static int save_axeX, save_axeY, save_boatX, save_boatY = 0;
+	String fileName = "coordinates.txt";
 	
 	// player
 	private Player player;
@@ -170,18 +177,44 @@ public class PlayState extends GameState {
 		
 	}
 	
+	public void readfromfile() {
+		try {
+			BufferedReader in = new BufferedReader(new FileReader(fileName));
+			save_axeX = Integer.parseInt(in.readLine());
+			save_axeY = Integer.parseInt(in.readLine());
+			save_boatX = Integer.parseInt(in.readLine());
+			save_boatY = Integer.parseInt(in.readLine());
+			in.close();
+		} catch (FileNotFoundException e2) {
+			save_axeY = 416;
+			save_axeX = 592;
+			save_boatY = 192;
+			save_boatX = 64;
+			e2.printStackTrace();
+		} catch (NumberFormatException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
 	private void populateItems() {
 		
 		Item item;
 		
 		item = new Item(tileMap);
 		item.setType(Item.AXE);
-		item.setTilePosition(26, 37);
+		
+		readfromfile();
+		
+		item.setTilePosition(save_axeX/16, save_axeY/16);
 		items.add(item);
 		
 		item = new Item(tileMap);
 		item.setType(Item.BOAT);
-		item.setTilePosition(12, 4);
+		item.setTilePosition(save_boatX/16, save_boatY/16);
 		items.add(item);
 		
 	}

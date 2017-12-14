@@ -9,8 +9,9 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+import com.neet.DiamondHunter.Main.Game;
 import com.neet.DiamondHunter.Main.GamePanel;
-import com.neet.DiamondHunter.Main.Main;
+
 import com.neet.DiamondHunter.Manager.Content;
 import com.neet.DiamondHunter.Manager.GameStateManager;
 import com.neet.DiamondHunter.Manager.JukeBox;
@@ -92,13 +93,16 @@ if(currentOption == 0) g.drawImage(snow, 22, 74, null);
 		}
 	}
 	
+	Game game = new Game();
 	private void selectOption() {
+		game.run();
 		if(currentOption == 0) {
 			gsm.setState(GameStateManager.PLAY);
 		}
 		if(currentOption == 1) {
-			String[] args = null;
-			Application.launch(Main.class, args);
+//			String[] args = null;			
+//			Application.launch(Game.class, args);
+			game.setvisible();
 		}
 		if(currentOption == 2) {
 			System.exit(0);

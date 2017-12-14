@@ -7,8 +7,12 @@ import java.awt.event.KeyEvent;
 import javafx.scene.image.ImageView;
 
 
+import javafx.event.Event;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -32,11 +36,13 @@ import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.neet.DiamondHunter.Main.Game;
 import com.neet.DiamondHunter.Manager.Keys;
 
 public class MapViewer implements Initializable{
 
-
+	Stage primaryStage= new Stage();
+	
 	/*
 	 * public MapViewer() { // TODO Auto-generated constructor stub }
 	 */
@@ -50,7 +56,7 @@ public class MapViewer implements Initializable{
 
 		/*Alert saved = new Alert(Alert.AlertType.INFORMATION);
 		saved.setTitle("Axe and Boat");
-		saved.setHeaderText("Changes has been saved.");*/
+		saved.setHeaderText("Changes have been saved.");*/
 
 
 		readfromfile();
@@ -356,9 +362,10 @@ public class MapViewer implements Initializable{
 			};
 		});
 
-
+//clicking on save button
 	savebutton.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 		public void handle(javafx.scene.input.MouseEvent event) {
+			
 			
 			//Insert code for check valid position here
 			if (save_axeY == (axeY*16) && save_axeX == (axeX * 16) && save_boatY == (boatY * 16) && save_boatX == (boatX *16)) {
@@ -369,6 +376,24 @@ public class MapViewer implements Initializable{
 			}
 			else {
 				
+				Parent root;
+				try {
+					root = FXMLLoader.load(getClass().getResource("savedialog.fxml"));
+					 	primaryStage.setTitle("Saved changes");        
+				        Scene scene = new Scene(root);
+				        primaryStage.setScene(scene);
+				        primaryStage.setResizable(false);
+				        primaryStage.show();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				//close editor when OK is clicked
+				 Scene scene = savebutton.getScene();
+			     Stage currentscene = (Stage)scene.getWindow();
+			     currentscene.hide();
+				
 				save_axeY = axeY * 16;
 				save_axeX = axeX * 16;
 				save_boatY = boatY * 16;
@@ -376,12 +401,11 @@ public class MapViewer implements Initializable{
 				
 
 				savetofile();
-
-				
-				
+		       
+		        
 				System.out.println("Changes saved");
-				//code to alert changes made
 			}
+			
 			
 			
 			// if(first_boat==false){
@@ -416,6 +440,9 @@ public class MapViewer implements Initializable{
 			}*/
 
 		}
+		
+
+		     
 
 	});
 }
@@ -578,9 +605,43 @@ public class MapViewer implements Initializable{
 			e1.printStackTrace();
 		}
 	}
-
+	
+	//clicking on reset button
+			@FXML
+			public void resetbutton() {
+				Parent root;
+				try {
+					root = FXMLLoader.load(getClass().getResource("resetdialog.fxml"));
+					 	primaryStage.setTitle("Reset Positions");        
+				        Scene scene = new Scene(root);
+				        primaryStage.setScene(scene);
+				        primaryStage.setResizable(false);
+				        primaryStage.show();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+	//clicking on back button
+			@FXML
+			public void backbutton() {
+				Parent root;
+				try {
+					root = FXMLLoader.load(getClass().getResource("backdialog.fxml"));
+					 	primaryStage.setTitle("Exit Editor");        
+				        Scene scene = new Scene(root);
+				        primaryStage.setScene(scene);
+				        primaryStage.setResizable(false);
+				        primaryStage.show();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+	
 	//////////////////////////////////////////////////
-
+			
 	// Variables Declaration
 
 	
@@ -613,7 +674,7 @@ public class MapViewer implements Initializable{
 	private Button savebutton;
 
 	@FXML
-	private Button backbutton;
+	public Button backbutton;
 
 	@FXML
 	private Button resetbutton;
@@ -632,4 +693,5 @@ public class MapViewer implements Initializable{
 
 	@FXML
 	private Button axe;
+
 }
