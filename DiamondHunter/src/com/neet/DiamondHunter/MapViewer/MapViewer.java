@@ -5,8 +5,7 @@ import javafx.event.EventHandler;
 import java.awt.event.*;
 import java.awt.event.KeyEvent;
 import javafx.scene.image.ImageView;
-
-
+import javafx.application.Platform;
 import javafx.event.Event;
 
 import javafx.fxml.FXML;
@@ -39,33 +38,35 @@ import java.util.ResourceBundle;
 import com.neet.DiamondHunter.Main.Game;
 import com.neet.DiamondHunter.Manager.Keys;
 
-public class MapViewer implements Initializable{
+public class MapViewer implements Initializable {
 
-	Stage primaryStage= new Stage();
 	
+	Stage primaryStage = new Stage();
+
 	/*
 	 * public MapViewer() { // TODO Auto-generated constructor stub }
 	 */
-	
+
 	public static int save_axeX, save_axeY, save_boatX, save_boatY = 0;
-	
+
 	private int axeX, axeY, boatX, boatY = 0;
 
 	public void initialize(URL location, ResourceBundle resources) {
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		/*Alert saved = new Alert(Alert.AlertType.INFORMATION);
-		saved.setTitle("Axe and Boat");
-		saved.setHeaderText("Changes have been saved.");*/
-
+		/*
+		 * Alert saved = new Alert(Alert.AlertType.INFORMATION);
+		 * saved.setTitle("Axe and Boat");
+		 * saved.setHeaderText("Changes have been saved.");
+		 */
 
 		readfromfile();
-		
+
 		axeX = save_axeX / 16;
 		axeY = save_axeY / 16;
 		boatX = save_boatX / 16;
 		boatY = save_boatY / 16;
-		
+
 		GraphicsContext g = canvas.getGraphicsContext2D();
 		loadTiles("/Tilesets/testtileset.gif");
 		loadItems("/Sprites/items.gif");
@@ -77,14 +78,11 @@ public class MapViewer implements Initializable{
 		g.drawImage(itemss[0], save_boatX, save_boatY);
 		g.drawImage(itemss[1], save_axeX, save_axeY);
 		// Set TextField to default/initial value
-		
 
 		y_Axe.setText(Integer.toString(save_axeY / 16));
 		x_Axe.setText(Integer.toString(save_axeX / 16));
 		y_Boat.setText(Integer.toString(save_boatY / 16));
 		x_Boat.setText(Integer.toString(save_boatX / 16));
-		
-
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 		// Objects on GUI
@@ -96,17 +94,15 @@ public class MapViewer implements Initializable{
 				select = 1;
 			}
 		});
-		
-		
+
 		axe.setLayoutX((save_axeX + 383));
 		axe.setLayoutY(save_axeY + 64);
 		axe.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
-		
+
 			public void handle(javafx.scene.input.MouseEvent event) {
 				select = 0;
 			}
 		});
-	
 
 		canvas.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 
@@ -122,22 +118,21 @@ public class MapViewer implements Initializable{
 					}
 					axeX = (int) e.getX() / 16;
 					axeY = (int) e.getY() / 16;
-					  if (check_tiles(axeY,axeX)){
-							gg.drawImage(itemss[2], axeX * 16, axeY * 16);
-							x_Axe.setText(Integer.toString(axeX));
-							y_Axe.setText(Integer.toString(axeY));
-							axe.setLayoutX((axeX) * 16 + 383);
-							axe.setLayoutY((axeY) * 16 + 64);
-						}
-					  else{
-				    x_Axe.setText(Integer.toString(axeX));
-					y_Axe.setText(Integer.toString(axeY));
-					first_axe = false;
-					gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-					axe.setLayoutX((axeX) * 16 + 383);
-					axe.setLayoutY((axeY) * 16 + 64);
-					  }
-					
+					if (check_tiles(axeY, axeX)) {
+						gg.drawImage(itemss[2], axeX * 16, axeY * 16);
+						x_Axe.setText(Integer.toString(axeX));
+						y_Axe.setText(Integer.toString(axeY));
+						axe.setLayoutX((axeX) * 16 + 383);
+						axe.setLayoutY((axeY) * 16 + 64);
+					} else {
+						x_Axe.setText(Integer.toString(axeX));
+						y_Axe.setText(Integer.toString(axeY));
+						first_axe = false;
+						gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+						axe.setLayoutX((axeX) * 16 + 383);
+						axe.setLayoutY((axeY) * 16 + 64);
+					}
+
 				} else {
 					draw(gg);
 					if (first_axe) {
@@ -148,304 +143,256 @@ public class MapViewer implements Initializable{
 					}
 					boatX = (int) e.getX() / 16;
 					boatY = (int) e.getY() / 16;
-					if (check_tiles(boatY,boatX)){
+					if (check_tiles(boatY, boatX)) {
 						gg.drawImage(itemss[2], (boatX) * 16, (boatY) * 16);
 						x_Boat.setText(Integer.toString(boatX));
 						y_Boat.setText(Integer.toString(boatY));
 						boat.setLayoutX((boatX) * 16 + 383);
 						boat.setLayoutY((boatY) * 16 + 64);
-					}
-					else{
-					
-					x_Boat.setText(Integer.toString(boatX));
-					y_Boat.setText(Integer.toString(boatY));
-					first_boat = false;
-					gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-					
-					boat.setLayoutX((boatX) * 16 + 383);
-					boat.setLayoutY((boatY) * 16 + 64);
+					} else {
+
+						x_Boat.setText(Integer.toString(boatX));
+						y_Boat.setText(Integer.toString(boatY));
+						first_boat = false;
+						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+
+						boat.setLayoutX((boatX) * 16 + 383);
+						boat.setLayoutY((boatY) * 16 + 64);
 					}
 				}
-				
+
 			}
 		});
 
-		
 		x_Axe.textProperty().addListener((observable, oldValue, newValue) -> {
 			GraphicsContext gg = canvas.getGraphicsContext2D();
-			try{
+			try {
 				draw(gg);
-		    
-		    axeX=Integer.parseInt(x_Axe.getText());
-		    if (check_tiles(axeY,axeX)){
-				gg.drawImage(itemss[0], (boatX) * 16, (boatY) * 16);
-				gg.drawImage(itemss[2], axeX * 16, axeY * 16);
+
+				axeX = Integer.parseInt(x_Axe.getText());
+				if (check_tiles(axeY, axeX)) {
+					gg.drawImage(itemss[0], (boatX) * 16, (boatY) * 16);
+					gg.drawImage(itemss[2], axeX * 16, axeY * 16);
+
+				} else {
+					if (axeX >= 40) {
+						gg.drawImage(itemss[2], 39 * 16, axeY * 16);
+						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+						// gg.drawImage(itemss[0], save_boatX, save_boatY);
+						axe.setLayoutX((39) * 16 + 383);
+						axe.setLayoutY((axeY) * 16 + 64);
+					} else {
+						gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+						// gg.drawImage(itemss[0], save_boatX, save_boatY);
+						axe.setLayoutX((axeX) * 16 + 383);
+						axe.setLayoutY((axeY) * 16 + 64);
+
+					}
+
+				}
+			}
+
+			catch (NullPointerException e) {
 
 			}
-		    else
-		    {
-		    if(axeX >=40)
-		    {
-		    	gg.drawImage(itemss[2], 39 * 16, axeY * 16);
-		    	gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-		    	//gg.drawImage(itemss[0], save_boatX, save_boatY);
-		    	axe.setLayoutX((39) * 16 + 383);
-		    	axe.setLayoutY((axeY) * 16 + 64);
-		    }
-		    else{
-		    	gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-		    	gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-		    	//gg.drawImage(itemss[0], save_boatX, save_boatY);
-		    	axe.setLayoutX((axeX) * 16 + 383);
-		    	axe.setLayoutY((axeY) * 16 + 64);
 
-		    }
-		    
-		    }
-			}
-			
-			catch (NullPointerException e){
-				
-			}
-			
-			catch(NumberFormatException e){
+			catch (NumberFormatException e) {
 				gg.drawImage(itemss[2], 0 * 16, axeY * 16);
-		    	gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-		    	//gg.drawImage(itemss[0], save_boatX, save_boatY);
-		    	axe.setLayoutX((0) * 16 + 383);
-		    	axe.setLayoutY((axeY) * 16 + 64);
-				
-				
-			};
+				gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+				// gg.drawImage(itemss[0], save_boatX, save_boatY);
+				axe.setLayoutX((0) * 16 + 383);
+				axe.setLayoutY((axeY) * 16 + 64);
+
+			}
+			;
 		});
-		
+
 		y_Axe.textProperty().addListener((observable, oldValue, newValue) -> {
 			GraphicsContext gg = canvas.getGraphicsContext2D();
-			try{
+			try {
 				draw(gg);
-		
-		    axeY=Integer.parseInt(y_Axe.getText());
-		    if (check_tiles(axeY,axeX)){
-				gg.drawImage(itemss[0], (boatX) * 16, (boatY) * 16);
-				gg.drawImage(itemss[2], axeX * 16, axeY * 16);
+
+				axeY = Integer.parseInt(y_Axe.getText());
+				if (check_tiles(axeY, axeX)) {
+					gg.drawImage(itemss[0], (boatX) * 16, (boatY) * 16);
+					gg.drawImage(itemss[2], axeX * 16, axeY * 16);
+
+				} else {
+					if (axeY >= 40) {
+						gg.drawImage(itemss[2], axeX * 16, 39 * 16);
+						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+						axe.setLayoutX((axeX) * 16 + 383);
+						axe.setLayoutY((39) * 16 + 64);
+					} else {
+
+						gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+						axe.setLayoutX((axeX) * 16 + 383);
+						axe.setLayoutY((axeY) * 16 + 64);
+
+					}
+
+				}
+			}
+
+			catch (NullPointerException e) {
 
 			}
-		    else {
-		    if (axeY >=40){
-		    	gg.drawImage(itemss[2], axeX * 16, 39 * 16);
-		    	gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-		    	axe.setLayoutX((axeX) * 16 + 383);
-		    	axe.setLayoutY((39) * 16 + 64);
-		    		}
-		    else{
-		    	
-		    	gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-		    	gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-		    	axe.setLayoutX((axeX) * 16 + 383);
-		    	axe.setLayoutY((axeY) * 16 + 64);
-		    	
-		    	
-		    }
-	
-			}
-			}
-			
-			catch (NullPointerException e){
-				
-			}
-			
-			catch(NumberFormatException e){
-				
+
+			catch (NumberFormatException e) {
+
 				gg.drawImage(itemss[2], axeX * 16, 0 * 16);
-		    	gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-		    	axe.setLayoutX((axeX) * 16 + 383);
-		    	axe.setLayoutY((0) * 16 + 64);
-				
-			};
+				gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+				axe.setLayoutX((axeX) * 16 + 383);
+				axe.setLayoutY((0) * 16 + 64);
+
+			}
+			;
 		});
-		
+
 		// listening to the change in value of the text field of the x value of the boat
 		x_Boat.textProperty().addListener((observable, oldValue, newValue) -> {
 			GraphicsContext gg = canvas.getGraphicsContext2D();
 			draw(gg);
-			try{
-			
-			boatX=Integer.parseInt(x_Boat.getText());
-			if (check_tiles(boatY,boatX)){
-				gg.drawImage(itemss[2], (boatX) * 16, (boatY) * 16);
-				gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+			try {
+
+				boatX = Integer.parseInt(x_Boat.getText());
+				if (check_tiles(boatY, boatX)) {
+					gg.drawImage(itemss[2], (boatX) * 16, (boatY) * 16);
+					gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+
+				}
+
+				else {
+
+					if (boatX >= 40) {
+						gg.drawImage(itemss[2], 39 * 16, boatY * 16);
+						gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+						boat.setLayoutX((39) * 16 + 383);
+						boat.setLayoutY((boatY) * 16 + 64);
+
+					} else {
+
+						gg.drawImage(itemss[0], boatX * 16, boatY * 16);// draw the boat
+						gg.drawImage(itemss[1], axeX * 16, axeY * 16);// draw the axe
+						boat.setLayoutX((boatX) * 16 + 383);
+						boat.setLayoutY((boatY) * 16 + 64);
+
+					}
+				}
 
 			}
-			
-			else 
-			{
-		
-			if (boatX >= 40){
-				 gg.drawImage(itemss[2], 39 * 16, boatY * 16);	
-				 gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-				 boat.setLayoutX((39) * 16 + 383);
-				 boat.setLayoutY((boatY) * 16 + 64);
-				
+
+			catch (NullPointerException e) {
+
 			}
-			else 
-			{
-				
-				 gg.drawImage(itemss[0], boatX * 16, boatY * 16);// draw the boat
-		   	     gg.drawImage(itemss[1], axeX * 16, axeY * 16);// draw the axe
-					boat.setLayoutX((boatX) * 16 + 383);
-					boat.setLayoutY((boatY) * 16 + 64);	
-				
-				
-				}
-			}	
-					
-		}
-			
-			catch (NullPointerException e){
-				
-			}
-			
-			catch(NumberFormatException e){
-				 gg.drawImage(itemss[2], 0* 16, boatY * 16);// draw the boat
-				 gg.drawImage(itemss[1], axeX * 16, axeY * 16);// draw the axe
+
+			catch (NumberFormatException e) {
+				gg.drawImage(itemss[2], 0 * 16, boatY * 16);// draw the boat
+				gg.drawImage(itemss[1], axeX * 16, axeY * 16);// draw the axe
 				boat.setLayoutX((0) * 16 + 383);
 				boat.setLayoutY((boatY) * 16 + 64);
-				
-			};
+
+			}
+			;
 		});
-		
+
 		y_Boat.textProperty().addListener((observable, oldValue, newValue) -> {
 			GraphicsContext gg = canvas.getGraphicsContext2D();
-			try{
+			try {
 				draw(gg);
-	
-			boatY=Integer.parseInt(y_Boat.getText());
-			if (check_tiles(boatY,boatX)){
-				gg.drawImage(itemss[2], (boatX) * 16, (boatY) * 16);
-				gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+
+				boatY = Integer.parseInt(y_Boat.getText());
+				if (check_tiles(boatY, boatX)) {
+					gg.drawImage(itemss[2], (boatX) * 16, (boatY) * 16);
+					gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+
+				} else
+
+				{
+
+					if (boatY >= 40) {
+						gg.drawImage(itemss[2], boatX * 16, 39 * 16);
+						gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+						boat.setLayoutX((boatX) * 16 + 383);
+						boat.setLayoutY((39) * 16 + 64);
+					}
+
+					else {
+
+						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+						gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+						boat.setLayoutX((boatX) * 16 + 383);
+						boat.setLayoutY((boatY) * 16 + 64);
+
+					}
+				}
 
 			}
-			else
-			
-			{
-			
-				if (boatY >= 40)
-			{
-		    gg.drawImage(itemss[2], boatX * 16, 39 * 16);
-		    gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-			boat.setLayoutX((boatX) * 16 + 383);
-			boat.setLayoutY((39) * 16 + 64);
-			}
-			
-			else {
-				
-				 gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-				 gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-		       	boat.setLayoutX((boatX) * 16 + 383);
-				boat.setLayoutY((boatY) * 16 + 64);
-				
-				
-							}
-					}
-			
-			}
-					
-			catch (NullPointerException e){
+
+			catch (NullPointerException e) {
 				e.printStackTrace();
-				
-			}		
-			catch(NumberFormatException e){	
-				 gg.drawImage(itemss[2], boatX * 16, 0 * 16);
-				 gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-		       	boat.setLayoutX((boatX) * 16 + 383);
+
+			} catch (NumberFormatException e) {
+				gg.drawImage(itemss[2], boatX * 16, 0 * 16);
+				gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+				boat.setLayoutX((boatX) * 16 + 383);
 				boat.setLayoutY((0) * 16 + 64);
-			};
+			}
+			;
 		});
 
-//clicking on save button
-	savebutton.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
-		public void handle(javafx.scene.input.MouseEvent event) {
-			
-			
-			//Insert code for check valid position here
-			if (save_axeY == (axeY*16) && save_axeX == (axeX * 16) && save_boatY == (boatY * 16) && save_boatX == (boatX *16)) {
-				//code to alert that no changes made
-				System.out.println("No changes made");
-			} else if (map[axeY][axeX] == 20 || map[axeY][axeX] == 21 || map[boatY][boatX] == 20 || map[boatY][boatX] == 21 || map[boatY][boatX] == 22) {
-				//code to display no-entry sign
+		// clicking on save button
+		savebutton.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
+			public void handle(javafx.scene.input.MouseEvent event) {
+
+				// Insert code for check valid position here
+				if (save_axeY == (axeY * 16) && save_axeX == (axeX * 16) && save_boatY == (boatY * 16)
+						&& save_boatX == (boatX * 16)) {
+					// code to alert that no changes made
+					System.out.println("No changes made");
+				} else if (map[axeY][axeX] == 20 || map[axeY][axeX] == 21 || map[boatY][boatX] == 20
+						|| map[boatY][boatX] == 21 || map[boatY][boatX] == 22) {
+					// code to display no-entry sign
+				} else {
+
+					Parent root;
+					try {
+						root = FXMLLoader.load(getClass().getResource("savedialog.fxml"));
+						primaryStage.setTitle("Saved changes");
+						Scene scene = new Scene(root);
+						primaryStage.setScene(scene);
+						primaryStage.setResizable(false);
+						primaryStage.show();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+					// close editor when OK is clicked
+					Scene scene = savebutton.getScene();
+					Stage currentscene = (Stage) scene.getWindow();
+					currentscene.hide();
+
+					save_axeY = axeY * 16;
+					save_axeX = axeX * 16;
+					save_boatY = boatY * 16;
+					save_boatX = boatX * 16;
+
+					savetofile();
+
+					System.out.println("Changes saved");
+				}
+
 			}
-			else {
-				
-				Parent root;
-				try {
-					root = FXMLLoader.load(getClass().getResource("savedialog.fxml"));
-					 	primaryStage.setTitle("Saved changes");        
-				        Scene scene = new Scene(root);
-				        primaryStage.setScene(scene);
-				        primaryStage.setResizable(false);
-				        primaryStage.show();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				//close editor when OK is clicked
-				 Scene scene = savebutton.getScene();
-			     Stage currentscene = (Stage)scene.getWindow();
-			     currentscene.hide();
-				
-				save_axeY = axeY * 16;
-				save_axeX = axeX * 16;
-				save_boatY = boatY * 16;
-				save_boatX = boatX * 16;
-				
 
-				savetofile();
-		       
-		        
-				System.out.println("Changes saved");
-			}
-			
-			
-			
-			// if(first_boat==false){
-			/*try {
-				if (first_axe == true && first_boat == true) {
-					checkInvalidPos(axeY, axeX, boatY, boatX);
-				}
-				if (first_axe == false && first_boat == false) {
-					checkInvalidPos(axeX, axeY, boatX, boatY);
-				}
-				if (first_axe == true && first_boat == false) {
-					checkInvalidPos(axeY, axeX, boatX, boatY);
-				}
-				if (first_axe == false && first_boat == true) {
-					checkInvalidPos(axeX, axeY, boatY, boatX);
-				}
+		});
 
-				if (first_axe == false) {
-					save_axeX = axeY * 16;
-					save_axeY = axeX * 16;
-				}
-				if (first_boat == false) {
-					save_boatX = boatY * 16;
-					save_boatY = boatX * 16;
-				}
-				saved.setContentText("Position of Axe (x,y)  : " + save_axeY / 16 + " " + save_axeX / 16
-						+ "\nPosition of Boat (x,y) : " + save_boatY / 16 + " " + save_boatX / 16
-						+ "\n\n * please note that there is possibility that you might not be able to complete the game due to improper positioning.");
-				saved.showAndWait();
-			} catch (MyException e) {
-				Alerts.display("Alert", e.message);
-			}*/
-
-		}
 		
 
-		     
 
-	});
-}
+	}
 	/*
 	 * @FXML public void back() throws Exception { Scene scene = back.getScene();
 	 * Stage currentscene = (Stage) scene.getWindow(); currentscene.hide(); }
@@ -462,24 +409,21 @@ public class MapViewer implements Initializable{
 			itemss[col] = new WritableImage(setTile.getPixelReader(), col * tileSize, 16, tileSize, tileSize);
 		}
 	}
-	public boolean check_tiles( int n, int m){
+
+	public boolean check_tiles(int n, int m) {
 		try {
-			
-		if ((map[n][m]==20) || map[n][m]==22 || map[n][m]==21)
-		{
-			
-			return true;
+
+			if ((map[n][m] == 20) || map[n][m] == 22 || map[n][m] == 21) {
+
+				return true;
+			} else {
+
+				return false;
+			}
+		} catch (IndexOutOfBoundsException e) {
+
 		}
-		else {
-			
-			return false;
-		}
-		}
-		catch (IndexOutOfBoundsException e){
-	
-			
-		}
-		
+
 		return false;
 	}
 
@@ -502,17 +446,17 @@ public class MapViewer implements Initializable{
 		}
 
 	}
-	
-	public void loadError(String s ){
-		
-		try{
-			
+
+	public void loadError(String s) {
+
+		try {
+
 			Image image3 = new Image(s);
-			itemss[2]=image3;
+			itemss[2] = image3;
 		}
-		
-		catch (Exception e){
-			
+
+		catch (Exception e) {
+
 			e.printStackTrace();
 		}
 	}
@@ -568,7 +512,7 @@ public class MapViewer implements Initializable{
 		}
 
 	}
-	
+
 	public void savetofile() {
 		try {
 			PrintWriter out = new PrintWriter(new FileWriter(fileName));
@@ -582,7 +526,7 @@ public class MapViewer implements Initializable{
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void readfromfile() {
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(fileName));
@@ -605,48 +549,96 @@ public class MapViewer implements Initializable{
 			e1.printStackTrace();
 		}
 	}
+
+	// clicking on reset button
 	
-	//clicking on reset button
-			@FXML
-			public void resetbutton() {
-				Parent root;
-				try {
-					root = FXMLLoader.load(getClass().getResource("resetdialog.fxml"));
-					 	primaryStage.setTitle("Reset Positions");        
-				        Scene scene = new Scene(root);
-				        primaryStage.setScene(scene);
-				        primaryStage.setResizable(false);
-				        primaryStage.show();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
-	//clicking on back button
-			@FXML
-			public void backbutton() {
-				Parent root;
-				try {
-					root = FXMLLoader.load(getClass().getResource("backdialog.fxml"));
-					 	primaryStage.setTitle("Exit Editor");        
-				        Scene scene = new Scene(root);
-				        primaryStage.setScene(scene);
-				        primaryStage.setResizable(false);
-				        primaryStage.show();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-	
+	@FXML
+	public void resetbutton() {
+		Parent root;
+		try {
+			FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("resetdialog.fxml"));
+			// fxmlloader.setRoot(this);
+			fxmlloader.setController(this);
+			// root = FXMLLoader.load(getClass().getResource("resetdialog.fxml"));
+			root = fxmlloader.load();
+			primaryStage.setTitle("Reset Positions");
+			Scene scene = new Scene(root);
+			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
+			primaryStage.showAndWait();;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	 
+
+	// clicking on back button
+	@FXML
+	public void backbutton() {
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("backdialog.fxml"));
+			primaryStage.setTitle("Exit Editor");
+			Scene scene = new Scene(root);
+			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
+			primaryStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	private Button nobutton;
+
+	@FXML
+	public void nobutton() {
+		Scene scene = nobutton.getScene();
+		Stage currentscene = (Stage) scene.getWindow();
+		currentscene.hide();
+	}
+
+	@FXML
+	private Button yesbutton;
+
+	@FXML
+	public void yesbutton() {
+		GraphicsContext ggg = canvas.getGraphicsContext2D();
+		
+		save_axeY = 416;
+		save_axeX = 592;
+		save_boatY = 192;
+		save_boatX = 64;
+		axeX = save_axeX / 16;
+		axeY = save_axeY / 16;
+		boatX = save_boatX / 16;
+		boatY = save_boatY / 16;
+		
+		draw(ggg);
+		ggg.drawImage(itemss[1], axeX * 16, axeY * 16);
+		ggg.drawImage(itemss[0], boatX * 16, boatY * 16);
+		axe.setLayoutX((axeX) * 16 + 383);
+		axe.setLayoutY((axeY) * 16 + 64);
+		boat.setLayoutX((boatX) * 16 + 383);
+		boat.setLayoutY((boatY) * 16 + 64);
+		x_Axe.setText(Integer.toString(axeX));
+		y_Axe.setText(Integer.toString(axeY));
+		x_Boat.setText(Integer.toString(boatX));
+		y_Boat.setText(Integer.toString(boatY));
+		
+		Scene scene = yesbutton.getScene();
+		Stage currentscene = (Stage) scene.getWindow();
+		currentscene.hide();
+		// add code to reset positions here
+	}
+
 	//////////////////////////////////////////////////
-			
+
 	// Variables Declaration
 
-	
 	String fileName = "coordinates.txt";
-
 
 	int select = 0;
 	boolean first_boat = true, first_axe = true;
@@ -660,8 +652,6 @@ public class MapViewer implements Initializable{
 	private Image[] itemss;
 	public Image image;
 	private int numTilesAcross;
-	
-	
 
 	///////////////////////////////////////////////////////
 	@FXML
