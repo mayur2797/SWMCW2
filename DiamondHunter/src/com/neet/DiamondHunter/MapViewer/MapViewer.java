@@ -1,29 +1,5 @@
 package com.neet.DiamondHunter.MapViewer;
 
-import javafx.event.EventHandler;
-
-import java.awt.event.*;
-import java.awt.event.KeyEvent;
-import javafx.scene.image.ImageView;
-import javafx.application.Platform;
-import javafx.event.Event;
-
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.WritableImage;
-import javafx.stage.Stage;
-
-import javafx.scene.input.*;
-import javafx.scene.input.KeyCode;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -35,17 +11,25 @@ import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.neet.DiamondHunter.Main.Game;
-import com.neet.DiamondHunter.Manager.Keys;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
+import javafx.stage.Stage;
 
 public class MapViewer implements Initializable {
 
 	GraphicsContext gg;
 	Stage primaryStage = new Stage();
 
-	/*
-	 * public MapViewer() { // TODO Auto-generated constructor stub }
-	 */
 
 	public static int save_axeX, save_axeY, save_boatX, save_boatY = 0;
 
@@ -54,11 +38,6 @@ public class MapViewer implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		/*
-		 * Alert saved = new Alert(Alert.AlertType.INFORMATION);
-		 * saved.setTitle("Axe and Boat");
-		 * saved.setHeaderText("Changes have been saved.");
-		 */
 
 		gg = canvas.getGraphicsContext2D();
 		readfromfile();
@@ -68,7 +47,7 @@ public class MapViewer implements Initializable {
 		boatX = save_boatX / 16;
 		boatY = save_boatY / 16;
 
-		//GraphicsContext gg = canvas.getGraphicsContext2D();
+		// GraphicsContext gg = canvas.getGraphicsContext2D();
 		loadTiles("/Tilesets/testtileset.gif");
 		loadItems("/Sprites/items.gif");
 		loadMap("/Maps/testmap.map");
@@ -108,7 +87,6 @@ public class MapViewer implements Initializable {
 		canvas.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 
 			public void handle(javafx.scene.input.MouseEvent e) {
-				//GraphicsContext gg = canvas.getGraphicsContext2D();
 				if (select == 0) {
 					draw(gg);
 					if (first_boat) {
@@ -166,7 +144,6 @@ public class MapViewer implements Initializable {
 		});
 
 		x_Axe.textProperty().addListener((observable, oldValue, newValue) -> {
-			//GraphicsContext gg = canvas.getGraphicsContext2D();
 			try {
 				draw(gg);
 
@@ -179,13 +156,11 @@ public class MapViewer implements Initializable {
 					if (axeX >= 40) {
 						gg.drawImage(itemss[2], 39 * 16, axeY * 16);
 						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-						// gg.drawImage(itemss[0], save_boatX, save_boatY);
 						axe.setLayoutX((39) * 16 + 383);
 						axe.setLayoutY((axeY) * 16 + 64);
 					} else {
 						gg.drawImage(itemss[1], axeX * 16, axeY * 16);
 						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-						// gg.drawImage(itemss[0], save_boatX, save_boatY);
 						axe.setLayoutX((axeX) * 16 + 383);
 						axe.setLayoutY((axeY) * 16 + 64);
 
@@ -201,7 +176,6 @@ public class MapViewer implements Initializable {
 			catch (NumberFormatException e) {
 				gg.drawImage(itemss[2], 0 * 16, axeY * 16);
 				gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-				// gg.drawImage(itemss[0], save_boatX, save_boatY);
 				axe.setLayoutX((0) * 16 + 383);
 				axe.setLayoutY((axeY) * 16 + 64);
 
@@ -210,7 +184,6 @@ public class MapViewer implements Initializable {
 		});
 
 		y_Axe.textProperty().addListener((observable, oldValue, newValue) -> {
-			//GraphicsContext gg = canvas.getGraphicsContext2D();
 			try {
 				draw(gg);
 
@@ -254,7 +227,6 @@ public class MapViewer implements Initializable {
 
 		// listening to the change in value of the text field of the x value of the boat
 		x_Boat.textProperty().addListener((observable, oldValue, newValue) -> {
-			//GraphicsContext gg = canvas.getGraphicsContext2D();
 			draw(gg);
 			try {
 
@@ -300,7 +272,6 @@ public class MapViewer implements Initializable {
 		});
 
 		y_Boat.textProperty().addListener((observable, oldValue, newValue) -> {
-			//GraphicsContext gg = canvas.getGraphicsContext2D();
 			try {
 				draw(gg);
 
@@ -389,9 +360,6 @@ public class MapViewer implements Initializable {
 			}
 
 		});
-
-		
-
 
 	}
 	/*
@@ -552,7 +520,7 @@ public class MapViewer implements Initializable {
 	}
 
 	// clicking on reset button
-	
+
 	@FXML
 	public void resetbutton() {
 		Parent root;
@@ -566,13 +534,13 @@ public class MapViewer implements Initializable {
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
-			primaryStage.showAndWait();;
+			primaryStage.showAndWait();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	 
+
 	@FXML
 	private Button nobutton;
 
@@ -588,8 +556,7 @@ public class MapViewer implements Initializable {
 
 	@FXML
 	public void yesbutton() {
-		//GraphicsContext ggg = canvas.getGraphicsContext2D();
-		
+
 		save_axeY = 416;
 		save_axeX = 592;
 		save_boatY = 192;
@@ -598,9 +565,9 @@ public class MapViewer implements Initializable {
 		axeY = save_axeY / 16;
 		boatX = save_boatX / 16;
 		boatY = save_boatY / 16;
-		
+
 		savetofile();
-		
+
 		draw(gg);
 		gg.drawImage(itemss[1], axeX * 16, axeY * 16);
 		gg.drawImage(itemss[0], boatX * 16, boatY * 16);
@@ -612,7 +579,7 @@ public class MapViewer implements Initializable {
 		y_Axe.setText(Integer.toString(axeY));
 		x_Boat.setText(Integer.toString(boatX));
 		y_Boat.setText(Integer.toString(boatY));
-		
+
 		Scene scene = yesbutton.getScene();
 		Stage currentscene = (Stage) scene.getWindow();
 		currentscene.hide();
@@ -635,8 +602,6 @@ public class MapViewer implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
-	
 
 	//////////////////////////////////////////////////
 
