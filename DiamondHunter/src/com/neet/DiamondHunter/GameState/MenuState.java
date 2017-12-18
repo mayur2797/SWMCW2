@@ -93,16 +93,15 @@ if(currentOption == 0) g.drawImage(snow, 22, 74, null);
 		}
 	}
 	
-	Game game = new Game();
+	
 	private void selectOption() {
-		game.run();
 		if(currentOption == 0) {
 			gsm.setState(GameStateManager.PLAY);
 		}
 		if(currentOption == 1) {
-//			String[] args = null;			
-//			Application.launch(Game.class, args);
-			game.setvisible();
+			String[] args = null;			
+			Application.launch(Game.class, args);
+			gsm.setState(GameStateManager.PLAY);
 		}
 		if(currentOption == 2) {
 			System.exit(0);
