@@ -40,7 +40,7 @@ import com.neet.DiamondHunter.Manager.Keys;
 
 public class MapViewer implements Initializable {
 
-	
+	GraphicsContext gg;
 	Stage primaryStage = new Stage();
 
 	/*
@@ -60,6 +60,7 @@ public class MapViewer implements Initializable {
 		 * saved.setHeaderText("Changes have been saved.");
 		 */
 
+		gg = canvas.getGraphicsContext2D();
 		readfromfile();
 
 		axeX = save_axeX / 16;
@@ -67,16 +68,16 @@ public class MapViewer implements Initializable {
 		boatX = save_boatX / 16;
 		boatY = save_boatY / 16;
 
-		GraphicsContext g = canvas.getGraphicsContext2D();
+		//GraphicsContext gg = canvas.getGraphicsContext2D();
 		loadTiles("/Tilesets/testtileset.gif");
 		loadItems("/Sprites/items.gif");
 		loadMap("/Maps/testmap.map");
 		loadError("/Sprites/error.png");
 
 		// Draw Initial Map and Item Position
-		draw(g);
-		g.drawImage(itemss[0], save_boatX, save_boatY);
-		g.drawImage(itemss[1], save_axeX, save_axeY);
+		draw(gg);
+		gg.drawImage(itemss[0], save_boatX, save_boatY);
+		gg.drawImage(itemss[1], save_axeX, save_axeY);
 		// Set TextField to default/initial value
 
 		y_Axe.setText(Integer.toString(save_axeY / 16));
@@ -107,7 +108,7 @@ public class MapViewer implements Initializable {
 		canvas.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 
 			public void handle(javafx.scene.input.MouseEvent e) {
-				GraphicsContext gg = canvas.getGraphicsContext2D();
+				//GraphicsContext gg = canvas.getGraphicsContext2D();
 				if (select == 0) {
 					draw(gg);
 					if (first_boat) {
@@ -165,7 +166,7 @@ public class MapViewer implements Initializable {
 		});
 
 		x_Axe.textProperty().addListener((observable, oldValue, newValue) -> {
-			GraphicsContext gg = canvas.getGraphicsContext2D();
+			//GraphicsContext gg = canvas.getGraphicsContext2D();
 			try {
 				draw(gg);
 
@@ -209,7 +210,7 @@ public class MapViewer implements Initializable {
 		});
 
 		y_Axe.textProperty().addListener((observable, oldValue, newValue) -> {
-			GraphicsContext gg = canvas.getGraphicsContext2D();
+			//GraphicsContext gg = canvas.getGraphicsContext2D();
 			try {
 				draw(gg);
 
@@ -253,7 +254,7 @@ public class MapViewer implements Initializable {
 
 		// listening to the change in value of the text field of the x value of the boat
 		x_Boat.textProperty().addListener((observable, oldValue, newValue) -> {
-			GraphicsContext gg = canvas.getGraphicsContext2D();
+			//GraphicsContext gg = canvas.getGraphicsContext2D();
 			draw(gg);
 			try {
 
@@ -299,7 +300,7 @@ public class MapViewer implements Initializable {
 		});
 
 		y_Boat.textProperty().addListener((observable, oldValue, newValue) -> {
-			GraphicsContext gg = canvas.getGraphicsContext2D();
+			//GraphicsContext gg = canvas.getGraphicsContext2D();
 			try {
 				draw(gg);
 
@@ -572,6 +573,51 @@ public class MapViewer implements Initializable {
 		}
 	}
 	 
+	@FXML
+	private Button nobutton;
+
+	@FXML
+	public void nobutton() {
+		Scene scene = nobutton.getScene();
+		Stage currentscene = (Stage) scene.getWindow();
+		currentscene.hide();
+	}
+
+	@FXML
+	private Button yesbutton;
+
+	@FXML
+	public void yesbutton() {
+		//GraphicsContext ggg = canvas.getGraphicsContext2D();
+		
+		save_axeY = 416;
+		save_axeX = 592;
+		save_boatY = 192;
+		save_boatX = 64;
+		axeX = save_axeX / 16;
+		axeY = save_axeY / 16;
+		boatX = save_boatX / 16;
+		boatY = save_boatY / 16;
+		
+		savetofile();
+		
+		draw(gg);
+		gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+		gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+		axe.setLayoutX((axeX) * 16 + 383);
+		axe.setLayoutY((axeY) * 16 + 64);
+		boat.setLayoutX((boatX) * 16 + 383);
+		boat.setLayoutY((boatY) * 16 + 64);
+		x_Axe.setText(Integer.toString(axeX));
+		y_Axe.setText(Integer.toString(axeY));
+		x_Boat.setText(Integer.toString(boatX));
+		y_Boat.setText(Integer.toString(boatY));
+		
+		Scene scene = yesbutton.getScene();
+		Stage currentscene = (Stage) scene.getWindow();
+		currentscene.hide();
+		// add code to reset positions here
+	}
 
 	// clicking on back button
 	@FXML
@@ -590,49 +636,7 @@ public class MapViewer implements Initializable {
 		}
 	}
 
-	@FXML
-	private Button nobutton;
-
-	@FXML
-	public void nobutton() {
-		Scene scene = nobutton.getScene();
-		Stage currentscene = (Stage) scene.getWindow();
-		currentscene.hide();
-	}
-
-	@FXML
-	private Button yesbutton;
-
-	@FXML
-	public void yesbutton() {
-		GraphicsContext ggg = canvas.getGraphicsContext2D();
-		
-		save_axeY = 416;
-		save_axeX = 592;
-		save_boatY = 192;
-		save_boatX = 64;
-		axeX = save_axeX / 16;
-		axeY = save_axeY / 16;
-		boatX = save_boatX / 16;
-		boatY = save_boatY / 16;
-		
-		draw(ggg);
-		ggg.drawImage(itemss[1], axeX * 16, axeY * 16);
-		ggg.drawImage(itemss[0], boatX * 16, boatY * 16);
-		axe.setLayoutX((axeX) * 16 + 383);
-		axe.setLayoutY((axeY) * 16 + 64);
-		boat.setLayoutX((boatX) * 16 + 383);
-		boat.setLayoutY((boatY) * 16 + 64);
-		x_Axe.setText(Integer.toString(axeX));
-		y_Axe.setText(Integer.toString(axeY));
-		x_Boat.setText(Integer.toString(boatX));
-		y_Boat.setText(Integer.toString(boatY));
-		
-		Scene scene = yesbutton.getScene();
-		Stage currentscene = (Stage) scene.getWindow();
-		currentscene.hide();
-		// add code to reset positions here
-	}
+	
 
 	//////////////////////////////////////////////////
 
