@@ -28,7 +28,7 @@ import com.neet.DiamondHunter.TileMap.TileMap;
 public class PlayState extends GameState {
 	
 	public static int save_axeX, save_axeY, save_boatX, save_boatY = 0;
-	String fileName = "coordinates.txt";
+	String fileName = "coordinates.pskm";
 	
 	// player
 	private Player player;

@@ -13,7 +13,7 @@
 
       <ImageView fitHeight="764.0" fitWidth="1086.0">
          <image>
-            <Image url="@MapGUIbg.jpg" />
+            <Image url="/MapViewer/MapGUIbg.jpg" />
          </image>
       </ImageView>
       <Canvas fx:id="canvas" height="640.0" layoutX="384.0" layoutY="62.0" width="640.0" />
@@ -37,7 +37,7 @@
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="115.0">
                <image>
-                  <Image url="@../../../../../Resources/MapViewer/savebutton.jpg" />
+                  <Image url="/MapViewer/savebutton.jpg" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -45,7 +45,7 @@
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="115.0">
                <image>
-                  <Image url="@../../../../../Resources/MapViewer/resetbutton.jpg" />
+                  <Image url="/MapViewer/resetbutton.jpg" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -54,7 +54,7 @@
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="115.0">
                <image>
-                  <Image url="@../../../../../Resources/MapViewer/play_button.jpg" />
+                  <Image url="/MapViewer/play_button.jpg" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -62,7 +62,7 @@
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="115.0">
                <image>
-                  <Image url="@../../../../../Resources/MapViewer/quit_button.jpg" />
+                  <Image url="/MapViewer/quit_button.jpg" />
                </image>
             </ImageView>
          </graphic>

@@ -9,14 +9,14 @@
    <children>
       <ImageView fitHeight="367.0" fitWidth="560.0">
          <image>
-            <Image url="@../../../../../Resources/MapViewer/quit_alert.jpg" />
+            <Image url="/MapViewer/quit_alert.jpg" />
          </image>
       </ImageView>
       <Button fx:id="nobuttonback" layoutX="34.0" layoutY="316.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#nobuttonback" prefHeight="37.0" prefWidth="104.0">
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="104.0">
                <image>
-                  <Image url="@../../../../../Resources/MapViewer/no_button.jpg" />
+                  <Image url="/MapViewer/no_button.jpg" />
                </image>
             </ImageView>
          </graphic>
@@ -25,7 +25,7 @@
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="104.0">
                <image>
-                  <Image url="@../../../../../Resources/MapViewer/yes_button.jpg" />
+                  <Image url="/MapViewer/yes_button.jpg" />
                </image>
             </ImageView>
          </graphic>

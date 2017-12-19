@@ -4,34 +4,20 @@ package com.neet.DiamondHunter.GameState;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.swing.JFrame;
-import javax.swing.WindowConstants;
 
 import com.neet.DiamondHunter.Main.Game;
-import com.neet.DiamondHunter.Main.GamePanel;
-
 import com.neet.DiamondHunter.Manager.Content;
 import com.neet.DiamondHunter.Manager.GameStateManager;
 import com.neet.DiamondHunter.Manager.JukeBox;
 import com.neet.DiamondHunter.Manager.Keys;
 
-import javafx.application.Platform;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.WindowEvent;
 import javafx.application.Application;
-import javafx.stage.Stage;
 
 public class MenuState extends GameState {
 	
 	
 	private BufferedImage bg;
-	private BufferedImage diamond;
+	//private BufferedImage diamond;
 	private BufferedImage snow;
 		//private BufferedImage error;
 	private int currentOption = 0;
@@ -47,7 +33,7 @@ public class MenuState extends GameState {
 	
 	public void init() {
 		bg = Content.MENUBG[0][0];
-		diamond = Content.DIAMOND[0][0];
+		//diamond = Content.DIAMOND[0][0];
 		snow = Content.SNOW[0][0];
 	//error = Content.error[0][0];
 		JukeBox.load("/SFX/collect.wav", "collect");

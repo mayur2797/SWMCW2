@@ -10,14 +10,14 @@
    <children>
       <ImageView fitHeight="367.0" fitWidth="560.0">
          <image>
-            <Image url="@../../../../../Resources/MapViewer/nochanges_alert.jpg" />
+            <Image url="/MapViewer/nochanges_alert.jpg" />
          </image>
       </ImageView>
       <Button fx:id="NCokbutton" layoutX="221.0" layoutY="292.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#NCokbutton" prefHeight="37.0" prefWidth="104.0">
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="104.0">
                <image>
-                  <Image url="@../../../../../Resources/MapViewer/ok_button.jpg" />
+                  <Image url="/MapViewer/ok_button.jpg" />
                </image>
             </ImageView>
          </graphic>

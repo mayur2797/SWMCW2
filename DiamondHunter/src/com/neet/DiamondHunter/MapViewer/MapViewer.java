@@ -626,7 +626,7 @@ public class MapViewer implements Initializable {
 
 	// Variables Declaration
 
-	String fileName = "coordinates.txt";
+	String fileName = "coordinates.pskm";
 
 	int select = 0;
 	boolean first_boat = true, first_axe = true;
