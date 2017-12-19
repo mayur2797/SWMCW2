@@ -7,6 +7,7 @@ package com.neet.DiamondHunter.Main;
 import javax.swing.JFrame;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -31,13 +32,12 @@ public class Game extends Application {
 		window.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-//		launch(args);
 	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		windowmap = primaryStage;
-		System.out.println("Test!");
+		System.out.println("MapViewer");
 		AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("../MapViewer/MapViewer.fxml"));
 		Scene scene = new Scene(root);
 		windowmap.setScene(scene);
@@ -45,9 +45,9 @@ public class Game extends Application {
 
 		windowmap.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			public void handle(WindowEvent t) {
-				// Platform.exit();
+				Platform.exit();
 				// System.exit(0);
-				windowmap.hide();
+				//windowmap.hide();
 			}
 		});
 		windowmap.setResizable(false);
