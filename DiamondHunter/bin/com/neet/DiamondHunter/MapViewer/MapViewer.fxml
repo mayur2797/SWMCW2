@@ -33,31 +33,40 @@
       <TextField fx:id="y_Axe" layoutX="260.0" layoutY="306.0" prefHeight="24.0" prefWidth="41.0" />
       <TextField layoutX="181.0" layoutY="369.0" prefHeight="24.0" prefWidth="41.0" fx:id="x_Boat" />
       <TextField fx:id="y_Boat" layoutX="260.0" layoutY="369.0" prefHeight="24.0" prefWidth="41.0" />
-      <Button fx:id="savebutton" layoutX="150.0" layoutY="484.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0">
+      <Button fx:id="savebutton" layoutX="144.0" layoutY="525.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="115.0">
          <graphic>
-            <ImageView fitHeight="38.0" fitWidth="104.0">
+            <ImageView fitHeight="38.0" fitWidth="115.0">
                <image>
                   <Image url="@../../../../../Resources/MapViewer/savebutton.jpg" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="resetbutton" layoutX="150.0" layoutY="543.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#resetbutton" prefHeight="37.0" prefWidth="104.0">
+      <Button fx:id="resetbutton" layoutX="144.0" layoutY="586.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#resetbutton" prefHeight="37.0" prefWidth="115.0">
          <graphic>
-            <ImageView fitHeight="38.0" fitWidth="104.0">
+            <ImageView fitHeight="38.0" fitWidth="115.0">
                <image>
                   <Image url="@../../../../../Resources/MapViewer/resetbutton.jpg" />
                </image>
             </ImageView>
          </graphic></Button>
 
-      <Button fx:id="backbutton" layoutX="150.0" layoutY="605.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backbutton" prefHeight="37.0" prefWidth="104.0">
+      <Button fx:id="playbutton" layoutX="144.0" layoutY="465.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#playbutton" prefHeight="37.0" prefWidth="115.0">
          <graphic>
-            <ImageView fitHeight="38.0" fitWidth="104.0">
+            <ImageView fitHeight="38.0" fitWidth="115.0">
                <image>
-                  <Image url="@../../../../../Resources/MapViewer/backbutton.jpg" />
+                  <Image url="@../../../../../Resources/MapViewer/play_button.jpg" />
                </image>
             </ImageView>
          </graphic></Button>
+      <Button fx:id="quitbutton" layoutX="144.0" layoutY="645.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#quitbutton" prefHeight="37.0" prefWidth="115.0">
+         <graphic>
+            <ImageView fitHeight="38.0" fitWidth="115.0">
+               <image>
+                  <Image url="@../../../../../Resources/MapViewer/quit_button.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
 
 
    </children>

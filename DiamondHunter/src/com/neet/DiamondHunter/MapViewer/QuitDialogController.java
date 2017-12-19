@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 
-public class BackDialogController {
+public class QuitDialogController {
 	@FXML
 	private Button nobuttonback;
 
@@ -23,11 +23,8 @@ public class BackDialogController {
 
 	 @FXML
 	 	public void yesbuttonback() {
-	 	 Scene scene = yesbuttonback.getScene();
-	 	   Stage currentscene = (Stage)scene.getWindow();
-	 	   currentscene.hide();
-	 	  
-	 		}
+	 	System.exit(0);
+	 }
 	 	  
 	 }
 

@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -593,19 +594,30 @@ public class MapViewer implements Initializable {
 		// add code to reset positions here
 	}
 
-	// clicking on back button
+	// clicking on playgame button
 	@FXML
-	public void backbutton() {
+	private Button playbutton;
+
+	@FXML
+	public void playbutton() {
+		 Platform.exit();
+	}
+	
+	//clicking on quitbutton
+	@FXML
+	private Button quitbutton;
+
+	@FXML
+	public void quitbutton() {
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("backdialog.fxml"));
-			primaryStage.setTitle("Exit Editor");
+			root = FXMLLoader.load(getClass().getResource("quitdialog.fxml"));
+			primaryStage.setTitle("Quit Editor?");
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
 			primaryStage.show();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
