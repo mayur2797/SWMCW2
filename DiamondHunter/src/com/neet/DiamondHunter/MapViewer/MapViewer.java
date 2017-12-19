@@ -323,6 +323,19 @@ public class MapViewer implements Initializable {
 				if (save_axeY == (axeY * 16) && save_axeX == (axeX * 16) && save_boatY == (boatY * 16)
 						&& save_boatX == (boatX * 16)) {
 					// code to alert that no changes made
+					Parent root;
+					try {
+						root = FXMLLoader.load(getClass().getResource("nochangesdialog.fxml"));
+						primaryStage.setTitle("No changes made");
+						Scene scene = new Scene(root);
+						primaryStage.setScene(scene);
+						primaryStage.setResizable(false);
+						primaryStage.show();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+
+					
 					System.out.println("No changes made");
 				} else if (map[axeY][axeX] == 20 || map[axeY][axeX] == 21 || map[boatY][boatX] == 20
 						|| map[boatY][boatX] == 21 || map[boatY][boatX] == 22) {
@@ -338,14 +351,8 @@ public class MapViewer implements Initializable {
 						primaryStage.setResizable(false);
 						primaryStage.show();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-
-					// close editor when OK is clicked
-					Scene scene = savebutton.getScene();
-					Stage currentscene = (Stage) scene.getWindow();
-					currentscene.hide();
 
 					save_axeY = axeY * 16;
 					save_axeX = axeX * 16;
