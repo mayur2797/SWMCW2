@@ -16,7 +16,7 @@
             <Image url="@MapGUIbg.jpg" />
          </image>
       </ImageView>
-      <Canvas fx:id="canvas" height="640.0" layoutX="383.0" layoutY="64.0" width="640.0" />
+      <Canvas fx:id="canvas" height="640.0" layoutX="384.0" layoutY="62.0" width="640.0" />
       <Button id="boat" fx:id="boat" maxHeight="16.0" maxWidth="16.0" minHeight="16.0" minWidth="16.0" mnemonicParsing="false" opacity="0.37" prefHeight="16.0" prefWidth="16.0" style="-fx-border-color: red;">
       
          <font>

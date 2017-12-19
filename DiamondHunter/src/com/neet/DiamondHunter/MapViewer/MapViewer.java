@@ -68,16 +68,16 @@ public class MapViewer implements Initializable {
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 		// Objects on GUI
 
-		boat.setLayoutX((save_boatX + 383));
-		boat.setLayoutY(save_boatY + 64);
+		boat.setLayoutX((save_boatX + 384));
+		boat.setLayoutY(save_boatY + 62);
 		boat.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 			public void handle(javafx.scene.input.MouseEvent event) {
 				select = 1;
 			}
 		});
 
-		axe.setLayoutX((save_axeX + 383));
-		axe.setLayoutY(save_axeY + 64);
+		axe.setLayoutX((save_axeX + 384));
+		axe.setLayoutY(save_axeY + 62);
 		axe.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
 
 			public void handle(javafx.scene.input.MouseEvent event) {
@@ -102,15 +102,15 @@ public class MapViewer implements Initializable {
 						gg.drawImage(itemss[2], axeX * 16, axeY * 16);
 						x_Axe.setText(Integer.toString(axeX));
 						y_Axe.setText(Integer.toString(axeY));
-						axe.setLayoutX((axeX) * 16 + 383);
-						axe.setLayoutY((axeY) * 16 + 64);
+						axe.setLayoutX((axeX) * 16 + 384);
+						axe.setLayoutY((axeY) * 16 + 62);
 					} else {
 						x_Axe.setText(Integer.toString(axeX));
 						y_Axe.setText(Integer.toString(axeY));
 						first_axe = false;
 						gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-						axe.setLayoutX((axeX) * 16 + 383);
-						axe.setLayoutY((axeY) * 16 + 64);
+						axe.setLayoutX((axeX) * 16 + 384);
+						axe.setLayoutY((axeY) * 16 + 62);
 					}
 
 				} else {
@@ -127,8 +127,8 @@ public class MapViewer implements Initializable {
 						gg.drawImage(itemss[2], (boatX) * 16, (boatY) * 16);
 						x_Boat.setText(Integer.toString(boatX));
 						y_Boat.setText(Integer.toString(boatY));
-						boat.setLayoutX((boatX) * 16 + 383);
-						boat.setLayoutY((boatY) * 16 + 64);
+						boat.setLayoutX((boatX) * 16 + 384);
+						boat.setLayoutY((boatY) * 16 + 62);
 					} else {
 
 						x_Boat.setText(Integer.toString(boatX));
@@ -136,8 +136,8 @@ public class MapViewer implements Initializable {
 						first_boat = false;
 						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
 
-						boat.setLayoutX((boatX) * 16 + 383);
-						boat.setLayoutY((boatY) * 16 + 64);
+						boat.setLayoutX((boatX) * 16 + 384);
+						boat.setLayoutY((boatY) * 16 + 62);
 					}
 				}
 
@@ -157,13 +157,13 @@ public class MapViewer implements Initializable {
 					if (axeX >= 40) {
 						gg.drawImage(itemss[2], 39 * 16, axeY * 16);
 						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-						axe.setLayoutX((39) * 16 + 383);
-						axe.setLayoutY((axeY) * 16 + 64);
+						axe.setLayoutX((39) * 16 + 384);
+						axe.setLayoutY((axeY) * 16 + 62);
 					} else {
 						gg.drawImage(itemss[1], axeX * 16, axeY * 16);
 						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-						axe.setLayoutX((axeX) * 16 + 383);
-						axe.setLayoutY((axeY) * 16 + 64);
+						axe.setLayoutX((axeX) * 16 + 384);
+						axe.setLayoutY((axeY) * 16 + 62);
 
 					}
 
@@ -177,8 +177,8 @@ public class MapViewer implements Initializable {
 			catch (NumberFormatException e) {
 				gg.drawImage(itemss[2], 0 * 16, axeY * 16);
 				gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-				axe.setLayoutX((0) * 16 + 383);
-				axe.setLayoutY((axeY) * 16 + 64);
+				axe.setLayoutX((0) * 16 + 384);
+				axe.setLayoutY((axeY) * 16 + 62);
 
 			}
 			;
@@ -197,14 +197,14 @@ public class MapViewer implements Initializable {
 					if (axeY >= 40) {
 						gg.drawImage(itemss[2], axeX * 16, 39 * 16);
 						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-						axe.setLayoutX((axeX) * 16 + 383);
-						axe.setLayoutY((39) * 16 + 64);
+						axe.setLayoutX((axeX) * 16 + 384);
+						axe.setLayoutY((39) * 16 + 62);
 					} else {
 
 						gg.drawImage(itemss[1], axeX * 16, axeY * 16);
 						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-						axe.setLayoutX((axeX) * 16 + 383);
-						axe.setLayoutY((axeY) * 16 + 64);
+						axe.setLayoutX((axeX) * 16 + 384);
+						axe.setLayoutY((axeY) * 16 + 62);
 
 					}
 
@@ -219,8 +219,8 @@ public class MapViewer implements Initializable {
 
 				gg.drawImage(itemss[2], axeX * 16, 0 * 16);
 				gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-				axe.setLayoutX((axeX) * 16 + 383);
-				axe.setLayoutY((0) * 16 + 64);
+				axe.setLayoutX((axeX) * 16 + 384);
+				axe.setLayoutY((0) * 16 + 62);
 
 			}
 			;
@@ -243,15 +243,15 @@ public class MapViewer implements Initializable {
 					if (boatX >= 40) {
 						gg.drawImage(itemss[2], 39 * 16, boatY * 16);
 						gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-						boat.setLayoutX((39) * 16 + 383);
-						boat.setLayoutY((boatY) * 16 + 64);
+						boat.setLayoutX((39) * 16 + 384);
+						boat.setLayoutY((boatY) * 16 + 62);
 
 					} else {
 
 						gg.drawImage(itemss[0], boatX * 16, boatY * 16);// draw the boat
 						gg.drawImage(itemss[1], axeX * 16, axeY * 16);// draw the axe
-						boat.setLayoutX((boatX) * 16 + 383);
-						boat.setLayoutY((boatY) * 16 + 64);
+						boat.setLayoutX((boatX) * 16 + 384);
+						boat.setLayoutY((boatY) * 16 + 62);
 
 					}
 				}
@@ -265,8 +265,8 @@ public class MapViewer implements Initializable {
 			catch (NumberFormatException e) {
 				gg.drawImage(itemss[2], 0 * 16, boatY * 16);// draw the boat
 				gg.drawImage(itemss[1], axeX * 16, axeY * 16);// draw the axe
-				boat.setLayoutX((0) * 16 + 383);
-				boat.setLayoutY((boatY) * 16 + 64);
+				boat.setLayoutX((0) * 16 + 384);
+				boat.setLayoutY((boatY) * 16 + 62);
 
 			}
 			;
@@ -288,16 +288,16 @@ public class MapViewer implements Initializable {
 					if (boatY >= 40) {
 						gg.drawImage(itemss[2], boatX * 16, 39 * 16);
 						gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-						boat.setLayoutX((boatX) * 16 + 383);
-						boat.setLayoutY((39) * 16 + 64);
+						boat.setLayoutX((boatX) * 16 + 384);
+						boat.setLayoutY((39) * 16 + 62);
 					}
 
 					else {
 
 						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
 						gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-						boat.setLayoutX((boatX) * 16 + 383);
-						boat.setLayoutY((boatY) * 16 + 64);
+						boat.setLayoutX((boatX) * 16 + 384);
+						boat.setLayoutY((boatY) * 16 + 62);
 
 					}
 				}
@@ -310,8 +310,8 @@ public class MapViewer implements Initializable {
 			} catch (NumberFormatException e) {
 				gg.drawImage(itemss[2], boatX * 16, 0 * 16);
 				gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-				boat.setLayoutX((boatX) * 16 + 383);
-				boat.setLayoutY((0) * 16 + 64);
+				boat.setLayoutX((boatX) * 16 + 384);
+				boat.setLayoutY((0) * 16 + 62);
 			}
 			;
 		});
@@ -579,10 +579,10 @@ public class MapViewer implements Initializable {
 		draw(gg);
 		gg.drawImage(itemss[1], axeX * 16, axeY * 16);
 		gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-		axe.setLayoutX((axeX) * 16 + 383);
-		axe.setLayoutY((axeY) * 16 + 64);
-		boat.setLayoutX((boatX) * 16 + 383);
-		boat.setLayoutY((boatY) * 16 + 64);
+		axe.setLayoutX((axeX) * 16 + 384);
+		axe.setLayoutY((axeY) * 16 + 62);
+		boat.setLayoutX((boatX) * 16 + 384);
+		boat.setLayoutY((boatY) * 16 + 62);
 		x_Axe.setText(Integer.toString(axeX));
 		y_Axe.setText(Integer.toString(axeY));
 		x_Boat.setText(Integer.toString(boatX));
