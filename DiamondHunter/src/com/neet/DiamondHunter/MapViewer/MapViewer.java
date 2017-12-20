@@ -31,14 +31,12 @@ public class MapViewer implements Initializable {
 	GraphicsContext gg;
 	Stage primaryStage = new Stage();
 
-
 	public static int save_axeX, save_axeY, save_boatX, save_boatY = 0;
 
 	private int axeX, axeY, boatX, boatY = 0;
 
 	public void initialize(URL location, ResourceBundle resources) {
 		////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 		gg = canvas.getGraphicsContext2D();
 		readfromfile();
@@ -149,24 +147,25 @@ public class MapViewer implements Initializable {
 				draw(gg);
 
 				axeX = Integer.parseInt(x_Axe.getText());
+				axeX = ((axeX < 0) ? 0 : ((axeX >= 40) ? 39 : axeX));
 				if (check_tiles(axeY, axeX)) {
-					gg.drawImage(itemss[0], (boatX) * 16, (boatY) * 16);
-					gg.drawImage(itemss[2], axeX * 16, axeY * 16);
-
-				} else {
-					if (axeX >= 40) {
-						gg.drawImage(itemss[2], 39 * 16, axeY * 16);
-						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-						axe.setLayoutX((39) * 16 + 384);
-						axe.setLayoutY((axeY) * 16 + 62);
+					if (check_tiles(boatY, boatX)) {
+						gg.drawImage(itemss[2], (boatX) * 16, (boatY) * 16);
 					} else {
-						gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-						axe.setLayoutX((axeX) * 16 + 384);
-						axe.setLayoutY((axeY) * 16 + 62);
-
+						gg.drawImage(itemss[0], (boatX) * 16, (boatY) * 16);						
 					}
-
+					gg.drawImage(itemss[2], axeX * 16, axeY * 16);
+					axe.setLayoutX((axeX) * 16 + 384);
+					axe.setLayoutY((axeY) * 16 + 62);
+				} else {
+					gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+					if (check_tiles(boatY, boatX)) {
+						gg.drawImage(itemss[2], (boatX) * 16, (boatY) * 16);
+					} else {
+						gg.drawImage(itemss[0], (boatX) * 16, (boatY) * 16);						
+					}
+					axe.setLayoutX((axeX) * 16 + 384);
+					axe.setLayoutY((axeY) * 16 + 62);
 				}
 			}
 
@@ -176,7 +175,11 @@ public class MapViewer implements Initializable {
 
 			catch (NumberFormatException e) {
 				gg.drawImage(itemss[2], 0 * 16, axeY * 16);
-				gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+				if (check_tiles(boatY, boatX)) {
+					gg.drawImage(itemss[2], (boatX) * 16, (boatY) * 16);
+				} else {
+					gg.drawImage(itemss[0], (boatX) * 16, (boatY) * 16);						
+				}
 				axe.setLayoutX((0) * 16 + 384);
 				axe.setLayoutY((axeY) * 16 + 62);
 
@@ -189,25 +192,25 @@ public class MapViewer implements Initializable {
 				draw(gg);
 
 				axeY = Integer.parseInt(y_Axe.getText());
+				axeY = ((axeY < 0) ? 0 : ((axeY >= 40) ? 39 : axeY));
 				if (check_tiles(axeY, axeX)) {
-					gg.drawImage(itemss[0], (boatX) * 16, (boatY) * 16);
-					gg.drawImage(itemss[2], axeX * 16, axeY * 16);
-
-				} else {
-					if (axeY >= 40) {
-						gg.drawImage(itemss[2], axeX * 16, 39 * 16);
-						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-						axe.setLayoutX((axeX) * 16 + 384);
-						axe.setLayoutY((39) * 16 + 62);
+					if (check_tiles(boatY, boatX)) {
+						gg.drawImage(itemss[2], (boatX) * 16, (boatY) * 16);
 					} else {
-
-						gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-						axe.setLayoutX((axeX) * 16 + 384);
-						axe.setLayoutY((axeY) * 16 + 62);
-
+						gg.drawImage(itemss[0], (boatX) * 16, (boatY) * 16);						
 					}
-
+					gg.drawImage(itemss[2], axeX * 16, axeY * 16);
+					axe.setLayoutX((axeX) * 16 + 384);
+					axe.setLayoutY((axeY) * 16 + 62);
+				} else {
+					gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+					if (check_tiles(boatY, boatX)) {
+						gg.drawImage(itemss[2], (boatX) * 16, (boatY) * 16);
+					} else {
+						gg.drawImage(itemss[0], (boatX) * 16, (boatY) * 16);						
+					}
+					axe.setLayoutX((axeX) * 16 + 384);
+					axe.setLayoutY((axeY) * 16 + 62);
 				}
 			}
 
@@ -216,12 +219,14 @@ public class MapViewer implements Initializable {
 			}
 
 			catch (NumberFormatException e) {
-
 				gg.drawImage(itemss[2], axeX * 16, 0 * 16);
-				gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+				if (check_tiles(boatY, boatX)) {
+					gg.drawImage(itemss[2], (boatX) * 16, (boatY) * 16);
+				} else {
+					gg.drawImage(itemss[0], (boatX) * 16, (boatY) * 16);						
+				}
 				axe.setLayoutX((axeX) * 16 + 384);
 				axe.setLayoutY((0) * 16 + 62);
-
 			}
 			;
 		});
@@ -232,30 +237,27 @@ public class MapViewer implements Initializable {
 			try {
 
 				boatX = Integer.parseInt(x_Boat.getText());
+				boatX = ((boatX < 0) ? 0 : ((boatX >= 40) ? 39 : boatX));
 				if (check_tiles(boatY, boatX)) {
-					gg.drawImage(itemss[2], (boatX) * 16, (boatY) * 16);
-					gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-
-				}
-
-				else {
-
-					if (boatX >= 40) {
-						gg.drawImage(itemss[2], 39 * 16, boatY * 16);
-						gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-						boat.setLayoutX((39) * 16 + 384);
-						boat.setLayoutY((boatY) * 16 + 62);
-
+					if (check_tiles(axeY, axeX)) {
+						gg.drawImage(itemss[2], axeX * 16, axeY * 16);
 					} else {
-
-						gg.drawImage(itemss[0], boatX * 16, boatY * 16);// draw the boat
-						gg.drawImage(itemss[1], axeX * 16, axeY * 16);// draw the axe
-						boat.setLayoutX((boatX) * 16 + 384);
-						boat.setLayoutY((boatY) * 16 + 62);
-
+						gg.drawImage(itemss[1], axeX * 16, axeY * 16);						
 					}
-				}
+					gg.drawImage(itemss[2], (boatX) * 16, (boatY) * 16);
+					boat.setLayoutX((boatX) * 16 + 384);
+					boat.setLayoutY((boatY) * 16 + 62);
 
+				} else {
+					gg.drawImage(itemss[0], boatX * 16, boatY * 16);// draw the boat
+					if (check_tiles(axeY, axeX)) {
+						gg.drawImage(itemss[2], axeX * 16, axeY * 16);
+					} else {
+						gg.drawImage(itemss[1], axeX * 16, axeY * 16);	// draw the axe					
+					}
+					boat.setLayoutX((boatX) * 16 + 384);
+					boat.setLayoutY((boatY) * 16 + 62);
+				}
 			}
 
 			catch (NullPointerException e) {
@@ -264,10 +266,13 @@ public class MapViewer implements Initializable {
 
 			catch (NumberFormatException e) {
 				gg.drawImage(itemss[2], 0 * 16, boatY * 16);// draw the boat
-				gg.drawImage(itemss[1], axeX * 16, axeY * 16);// draw the axe
+				if (check_tiles(axeY, axeX)) {
+					gg.drawImage(itemss[2], axeX * 16, axeY * 16);
+				} else {
+					gg.drawImage(itemss[1], axeX * 16, axeY * 16);	// draw the axe					
+				}
 				boat.setLayoutX((0) * 16 + 384);
 				boat.setLayoutY((boatY) * 16 + 62);
-
 			}
 			;
 		});
@@ -277,31 +282,27 @@ public class MapViewer implements Initializable {
 				draw(gg);
 
 				boatY = Integer.parseInt(y_Boat.getText());
+				boatY = ((boatY < 0) ? 0 : ((boatY >= 40) ? 39 : boatY));
 				if (check_tiles(boatY, boatX)) {
 					gg.drawImage(itemss[2], (boatX) * 16, (boatY) * 16);
-					gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-
-				} else
-
-				{
-
-					if (boatY >= 40) {
-						gg.drawImage(itemss[2], boatX * 16, 39 * 16);
-						gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-						boat.setLayoutX((boatX) * 16 + 384);
-						boat.setLayoutY((39) * 16 + 62);
+					if (check_tiles(axeY, axeX)) {
+						gg.drawImage(itemss[2], axeX * 16, axeY * 16);
+					} else {
+						gg.drawImage(itemss[1], axeX * 16, axeY * 16);	// draw the axe					
 					}
+					boat.setLayoutX((boatX) * 16 + 384);
+					boat.setLayoutY((boatY) * 16 + 62);
 
-					else {
-
-						gg.drawImage(itemss[0], boatX * 16, boatY * 16);
-						gg.drawImage(itemss[1], axeX * 16, axeY * 16);
-						boat.setLayoutX((boatX) * 16 + 384);
-						boat.setLayoutY((boatY) * 16 + 62);
-
+				} else {
+					gg.drawImage(itemss[0], boatX * 16, boatY * 16);
+					if (check_tiles(axeY, axeX)) {
+						gg.drawImage(itemss[2], axeX * 16, axeY * 16);
+					} else {
+						gg.drawImage(itemss[1], axeX * 16, axeY * 16);	// draw the axe					
 					}
+					boat.setLayoutX((boatX) * 16 + 384);
+					boat.setLayoutY((boatY) * 16 + 62);
 				}
-
 			}
 
 			catch (NullPointerException e) {
@@ -309,7 +310,11 @@ public class MapViewer implements Initializable {
 
 			} catch (NumberFormatException e) {
 				gg.drawImage(itemss[2], boatX * 16, 0 * 16);
-				gg.drawImage(itemss[1], axeX * 16, axeY * 16);
+				if (check_tiles(axeY, axeX)) {
+					gg.drawImage(itemss[2], axeX * 16, axeY * 16);
+				} else {
+					gg.drawImage(itemss[1], axeX * 16, axeY * 16);	// draw the axe					
+				}
 				boat.setLayoutX((boatX) * 16 + 384);
 				boat.setLayoutY((0) * 16 + 62);
 			}
@@ -336,11 +341,20 @@ public class MapViewer implements Initializable {
 						e.printStackTrace();
 					}
 
-					
-					System.out.println("No changes made");
-				} else if (map[axeY][axeX] == 20 || map[axeY][axeX] == 21 || map[boatY][boatX] == 20
-						|| map[boatY][boatX] == 21 || map[boatY][boatX] == 22) {
-					// code to display no-entry sign
+				} else if (check_tiles(axeY, axeX) || check_tiles(boatY, boatX)) {
+					// code to display that changes not saved due to invalid positions
+					Parent root;
+					try {
+						root = FXMLLoader.load(getClass().getResource("invalidpositiondialog.fxml"));
+						primaryStage.setTitle("Invalid positions");
+						Scene scene = new Scene(root);
+						primaryStage.setScene(scene);
+						primaryStage.setResizable(false);
+						primaryStage.show();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+
 				} else {
 
 					Parent root;
@@ -600,10 +614,10 @@ public class MapViewer implements Initializable {
 
 	@FXML
 	public void playbutton() {
-		 Platform.exit();
+		Platform.exit();
 	}
-	
-	//clicking on quitbutton
+
+	// clicking on quitbutton
 	@FXML
 	private Button quitbutton;
 

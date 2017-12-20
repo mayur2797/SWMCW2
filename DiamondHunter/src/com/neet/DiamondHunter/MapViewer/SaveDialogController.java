@@ -17,14 +17,5 @@ public class SaveDialogController {
 	     currentscene.hide();
 	}
 	     
-	 @FXML
-	 	private Button NCokbutton;
-
-	@FXML
-	 	public void NCokbutton() {
-	 		 Scene scene = NCokbutton.getScene();
-	 	     Stage currentscene = (Stage)scene.getWindow();
-	 	     currentscene.hide();    
-	     
-	}
+	
 }
