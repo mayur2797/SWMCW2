@@ -17,9 +17,7 @@ public class MenuState extends GameState {
 
 
 	private BufferedImage bg;
-	//private BufferedImage diamond;
 	private BufferedImage snow;
-	//private BufferedImage error;
 	private int currentOption = 0;
 
 	//adding the option to Edit Map in the menu
@@ -52,6 +50,7 @@ public class MenuState extends GameState {
 		Content.drawString(g, options[1], 34, 100);
 		Content.drawString(g, options[2], 48, 120);
 
+		//drawing the Santa hat accordingly
 		if(currentOption == 0) g.drawImage(snow, 22, 74, null);
 		else if(currentOption == 1) g.drawImage(snow, 12, 92, null);
 		else if(currentOption == 2) g.drawImage(snow, 26, 114, null);	
