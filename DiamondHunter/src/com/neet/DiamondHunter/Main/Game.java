@@ -41,6 +41,7 @@ public class Game extends Application {
 		AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("../MapViewer/MapViewer.fxml"));
 		Scene scene = new Scene(root);
 		windowmap.setScene(scene);
+		windowmap.setTitle("Map Viewer");
 		windowmap.show();
 
 		windowmap.setOnCloseRequest(new EventHandler<WindowEvent>() {
