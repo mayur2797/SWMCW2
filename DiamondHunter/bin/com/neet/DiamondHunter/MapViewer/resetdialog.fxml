@@ -5,30 +5,18 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<<<<<<< HEAD
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neet.DiamondHunter.MapViewer.ResetDialogController">
-   <children>
-      <ImageView fitHeight="367.0" fitWidth="560.0">
-         <image>
-            <Image url="@../../../../../Resources/MapViewer/reset_alert.jpg" />
-=======
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="367.0" fitWidth="560.0">
          <image>
             <Image url="/MapViewer/reset_alert.jpg" />
->>>>>>> 8461f9248a2724530013a3889affd22bbc9f16e6
          </image>
       </ImageView>
       <Button fx:id="nobutton" layoutX="192.0" layoutY="319.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#nobutton" prefHeight="37.0" prefWidth="104.0">
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="104.0">
                <image>
-<<<<<<< HEAD
-                  <Image url="@../../../../../Resources/MapViewer/no_button.jpg" />
-=======
                   <Image url="/MapViewer/no_button.jpg" />
->>>>>>> 8461f9248a2724530013a3889affd22bbc9f16e6
                </image>
             </ImageView>
          </graphic>
@@ -37,11 +25,7 @@
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="104.0">
                <image>
-<<<<<<< HEAD
-                  <Image url="@../../../../../Resources/MapViewer/yes_button.jpg" />
-=======
                   <Image url="/MapViewer/yes_button.jpg" />
->>>>>>> 8461f9248a2724530013a3889affd22bbc9f16e6
                </image>
             </ImageView>
          </graphic>

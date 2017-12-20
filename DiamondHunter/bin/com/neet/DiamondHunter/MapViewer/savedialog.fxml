@@ -10,22 +10,14 @@
    <children>
       <ImageView fitHeight="382.0" fitWidth="579.0">
          <image>
-<<<<<<< HEAD
-            <Image url="@../../../../../Resources/MapViewer/save_alert.jpg" />
-=======
             <Image url="/MapViewer/save_alert.jpg" />
->>>>>>> 8461f9248a2724530013a3889affd22bbc9f16e6
          </image>
       </ImageView>
       <Button fx:id="okbutton" layoutX="70.0" layoutY="331.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#okbutton" prefHeight="38.0" prefWidth="104.0">
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="104.0">
                <image>
-<<<<<<< HEAD
-                  <Image url="@../../../../../Resources/MapViewer/ok_button.jpg" />
-=======
                   <Image url="/MapViewer/ok_button.jpg" />
->>>>>>> 8461f9248a2724530013a3889affd22bbc9f16e6
                </image>
                <viewport>
                   <Rectangle2D />
