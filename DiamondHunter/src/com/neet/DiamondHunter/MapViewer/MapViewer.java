@@ -141,7 +141,7 @@ public class MapViewer implements Initializable {
 
 			}
 		});
-
+        // listening to the change of value for x value of axe
 		x_Axe.textProperty().addListener((observable, oldValue, newValue) -> {
 			try {
 				draw(gg);
@@ -186,7 +186,7 @@ public class MapViewer implements Initializable {
 			}
 			;
 		});
-
+      // listening to the change of value of y for axe
 		y_Axe.textProperty().addListener((observable, oldValue, newValue) -> {
 			try {
 				draw(gg);
@@ -276,7 +276,7 @@ public class MapViewer implements Initializable {
 			}
 			;
 		});
-
+// listening to the change of value of y of the boat in the text field
 		y_Boat.textProperty().addListener((observable, oldValue, newValue) -> {
 			try {
 				draw(gg);
@@ -400,7 +400,7 @@ public class MapViewer implements Initializable {
 			itemss[col] = new WritableImage(setTile.getPixelReader(), col * tileSize, 16, tileSize, tileSize);
 		}
 	}
-
+// fucntion to check if axe or boat can be placed on the map
 	public boolean check_tiles(int n, int m) {
 		try {
 
@@ -437,7 +437,7 @@ public class MapViewer implements Initializable {
 		}
 
 	}
-
+// function that gets the error image and store it as a new image
 	public void loadError(String s) {
 
 		try {
